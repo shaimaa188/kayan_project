@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductTypeFk1Assoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Category"
+    Cardinality="1"
+    Source="true"
+    Owner="products.productSystem.model.entity.CategoryEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Category"/>
+      <Attr Name="_foreignKey" Value="products.productSystem.model.entity.CategoryEO.CategoryPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.CategoryEO.CategoryNo"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="ProductType"
+    Cardinality="-1"
+    Owner="products.productSystem.model.entity.ProductTypeEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="ProductType"/>
+      <Attr Name="_foreignKey" Value="products.productSystem.model.entity.ProductTypeEO.ProductTypeFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.ProductTypeEO.CategoryNo"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

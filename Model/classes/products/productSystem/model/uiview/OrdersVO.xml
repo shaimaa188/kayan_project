@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OrdersVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="KayanOrdersEO.CARTOON_NUMBER, 
+       KayanOrdersEO.CR_DATE, 
+       KayanOrdersEO.CREATED_BY, 
+       KayanOrdersEO.CUSTOMER_NUMBER, 
+       KayanOrdersEO.KILO_NUMBER, 
+       KayanOrdersEO.LAST_MODIFIED_BY, 
+       KayanOrdersEO.MODIFICATION_DATE, 
+       KayanOrdersEO.ORDER_COUNTRY, 
+       KayanOrdersEO.ORDER_CURRENCY, 
+       KayanOrdersEO.ORDER_DETAILS, 
+       KayanOrdersEO.ORDER_NUMBER, 
+       KayanOrdersEO.ORDER_STATUS, 
+       KayanOrdersEO.PRODUCT_NUMBER, 
+       KayanOrdersEO.SHIPMENT_COMPANY, 
+       KayanOrdersEO.SHIPMENT_CURRENCY, 
+       KayanOrdersEO.SHIPMENT_DATE, 
+       KayanOrdersEO.SHIPMENT_FOLLOWUP_NUMBER, 
+       KayanOrdersEO.SHIPMENT_PRICE, 
+       KayanOrdersEO.SHIPMENT_TYPE, 
+       CustomerEO.C_FNAME, 
+       CustomerEO.C_NUMBER, 
+       CustomerEO.C_LANME, 
+       CustomerEO.CUSTOMER_MOBILE"
+  FromList="KAYAN_ORDERS KayanOrdersEO, CUSTOMER CustomerEO"
+  Where="CustomerEO.C_NUMBER = KayanOrdersEO.CUSTOMER_NUMBER">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="products.productSystem.model.uiview.OrdersVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ManageProductsAM_Country1_1"
+    ViewObjectName="products.productSystem.model.uiview.CountryVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Country1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_Currency1_1"
+    ViewObjectName="products.productSystem.model.uiview.CurrencyVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Currency1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_Orders1_1"
+    ViewObjectName="products.productSystem.model.uiview.OrdersVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Orders1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_OrderStatus1_1"
+    ViewObjectName="products.productSystem.model.uiview.OrderStatusVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="OrderStatus1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_OrderCountry"
+    ListVOName="ManageProductsAM_Country1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrderCountry"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrderCurrency"
+    ListVOName="ManageProductsAM_Currency1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrderCurrency"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CurrencyCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CurrencyApprv"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrderStatus"
+    ListVOName="ManageProductsAM_OrderStatus1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrderStatus"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StatusNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StatusAr"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="KayanOrdersEO"
+    Entity="products.productSystem.model.entity.KayanOrdersEO"/>
+  <EntityUsage
+    Name="CustomerEO"
+    Entity="products.productSystem.model.entity.CustomerEO"
+    ReadOnly="true"
+    DeleteParticipant="false">
+    <DesignTime>
+      <Attr Name="_customjoin" Value="true"/>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="CartoonNumber"
+    PrecisionRule="true"
+    EntityAttrName="CartoonNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="CARTOON_NUMBER"/>
+  <ViewAttribute
+    Name="CrDate"
+    PrecisionRule="true"
+    EntityAttrName="CrDate"
+    EntityUsage="KayanOrdersEO"
+    AliasName="CR_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="KayanOrdersEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CustomerNumber"
+    PrecisionRule="true"
+    EntityAttrName="CustomerNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="CUSTOMER_NUMBER"/>
+  <ViewAttribute
+    Name="KiloNumber"
+    PrecisionRule="true"
+    EntityAttrName="KiloNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="KILO_NUMBER"/>
+  <ViewAttribute
+    Name="LastModifiedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastModifiedBy"
+    EntityUsage="KayanOrdersEO"
+    AliasName="LAST_MODIFIED_BY"/>
+  <ViewAttribute
+    Name="ModificationDate"
+    PrecisionRule="true"
+    EntityAttrName="ModificationDate"
+    EntityUsage="KayanOrdersEO"
+    AliasName="MODIFICATION_DATE"/>
+  <ViewAttribute
+    Name="OrderCountry"
+    PrecisionRule="true"
+    EntityAttrName="OrderCountry"
+    EntityUsage="KayanOrdersEO"
+    AliasName="ORDER_COUNTRY"
+    LOVName="LOV_OrderCountry">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderCurrency"
+    PrecisionRule="true"
+    EntityAttrName="OrderCurrency"
+    EntityUsage="KayanOrdersEO"
+    AliasName="ORDER_CURRENCY"
+    LOVName="LOV_OrderCurrency">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderDetails"
+    PrecisionRule="true"
+    EntityAttrName="OrderDetails"
+    EntityUsage="KayanOrdersEO"
+    AliasName="ORDER_DETAILS"/>
+  <ViewAttribute
+    Name="OrderNumber"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="OrderNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="ORDER_NUMBER"/>
+  <ViewAttribute
+    Name="OrderStatus"
+    PrecisionRule="true"
+    EntityAttrName="OrderStatus"
+    EntityUsage="KayanOrdersEO"
+    AliasName="ORDER_STATUS"
+    LOVName="LOV_OrderStatus">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductNumber"
+    PrecisionRule="true"
+    EntityAttrName="ProductNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="PRODUCT_NUMBER"/>
+  <ViewAttribute
+    Name="ShipmentCompany"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentCompany"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_COMPANY"/>
+  <ViewAttribute
+    Name="ShipmentCurrency"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentCurrency"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_CURRENCY"/>
+  <ViewAttribute
+    Name="ShipmentDate"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentDate"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_DATE"/>
+  <ViewAttribute
+    Name="ShipmentFollowupNumber"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentFollowupNumber"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_FOLLOWUP_NUMBER"/>
+  <ViewAttribute
+    Name="ShipmentPrice"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentPrice"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_PRICE"/>
+  <ViewAttribute
+    Name="ShipmentType"
+    PrecisionRule="true"
+    EntityAttrName="ShipmentType"
+    EntityUsage="KayanOrdersEO"
+    AliasName="SHIPMENT_TYPE"/>
+  <ViewAttribute
+    Name="CFname"
+    PrecisionRule="true"
+    EntityAttrName="CFname"
+    EntityUsage="CustomerEO"
+    AliasName="C_FNAME"/>
+  <ViewAttribute
+    Name="CNumber"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="CNumber"
+    EntityUsage="CustomerEO"
+    AliasName="C_NUMBER"/>
+  <ViewAttribute
+    Name="CLanme"
+    PrecisionRule="true"
+    EntityAttrName="CLanme"
+    EntityUsage="CustomerEO"
+    AliasName="C_LANME"/>
+  <ViewAttribute
+    Name="CustomerMobile"
+    PrecisionRule="true"
+    EntityAttrName="CustomerMobile"
+    EntityUsage="CustomerEO"
+    AliasName="CUSTOMER_MOBILE"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="products.productSystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

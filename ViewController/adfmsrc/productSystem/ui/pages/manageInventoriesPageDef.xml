@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="manageInventoriesPageDef"
+                Package="productSystem.ui.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Inventory1" RangeSize="4" DataControl="ManageProductsAMDataControl" id="Inventory1Iterator"/>
+    <searchRegion Binds="Inventory1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Inventory1Query"/>
+    <iterator Binds="ProductsStock1" RangeSize="10" DataControl="ManageProductsAMDataControl" id="Product1Iterator"/>
+    <iterator Binds="InventoryProduct1" RangeSize="7" DataControl="ManageProductsAMDataControl"
+              id="InventoryProduct1Iterator"/>
+    <searchRegion Binds="InventoryProduct1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="InventoryProduct1Query"/>
+    <iterator Binds="ProductStockDistributionTrx1" RangeSize="10" DataControl="ManageProductsAMDataControl"
+              id="ProductStockDistributionTrx1Iterator"/>
+    <searchRegion Binds="Product1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Product1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Inventory1Iterator" id="Inventory1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.InventoryVO" Name="Inventory10">
+        <AttrNames>
+          <Item Value="InventoryNo"/>
+          <Item Value="Location"/>
+          <Item Value="ProductInvSum"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Inventory1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Inventory1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ManageProductsAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ManageProductsAMDataControl"/>
+    <attributeValues IterBinding="Inventory1Iterator" id="InventoryNo">
+      <AttrNames>
+        <Item Value="InventoryNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Inventory1Iterator" id="Location">
+      <AttrNames>
+        <Item Value="Location"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Product1Iterator" id="Product1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductsStockVO" Name="Product10">
+        <AttrNames>
+          <Item Value="PId"/>
+          <Item Value="PName"/>
+          <Item Value="PType"/>
+          <Item Value="PSize"/>
+          <Item Value="Quantity"/>
+          <Item Value="InStock"/>
+          <Item Value="remainingQuantity"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDescription"/>
+          <Item Value="PPrice"/>
+          <Item Value="PCurrency"/>
+          <Item Value="SizeDetails"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="InventoryProduct1Iterator" id="InventoryProduct1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.InventoryProductVO" Name="InventoryProduct10">
+        <AttrNames>
+          <Item Value="InventoryId"/>
+          <Item Value="ProductId"/>
+          <Item Value="PType"/>
+          <Item Value="PName"/>
+          <Item Value="Quantity"/>
+          <Item Value="Color"/>
+          <Item Value="PSize"/>
+          <Item Value="PDescription"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PPrice"/>
+          <Item Value="PCurrency"/>
+          <Item Value="SizeDetails"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Product1Iterator" id="InStock">
+      <AttrNames>
+        <Item Value="InStock"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="InventoryProduct1Iterator" id="CreateInsert_product_inventory"
+            InstanceName="ManageProductsAMDataControl.InventoryProduct1" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="InventoryProduct1Iterator" id="Execute"
+            InstanceName="ManageProductsAMDataControl.InventoryProduct1" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="Product1Iterator" id="PId">
+      <AttrNames>
+        <Item Value="PId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct1Iterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct1Iterator" id="InventoryId">
+      <AttrNames>
+        <Item Value="InventoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Product1Iterator" id="Execute_Product" InstanceName="ManageProductsAMDataControl.ProductsStock1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="InventoryProduct1Iterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="InventoryProduct1Iterator" id="InStock1">
+      <AttrNames>
+        <Item Value="InStock"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="InvId">
+      <AttrNames>
+        <Item Value="InvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="PId1">
+      <AttrNames>
+        <Item Value="PId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="ProductQty">
+      <AttrNames>
+        <Item Value="ProductQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="StockQty">
+      <AttrNames>
+        <Item Value="StockQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="StockTrx">
+      <AttrNames>
+        <Item Value="StockTrx"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductStockDistributionTrx1Iterator" id="TrxType">
+      <AttrNames>
+        <Item Value="TrxType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct1Iterator" id="Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductStockDistributionTrx1Iterator" id="CreateInsert_ProductStockDistributionTrx"
+            InstanceName="ManageProductsAMDataControl.ProductStockDistributionTrx1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="Product1Iterator" id="Product_Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_Color" id="Color" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Product1Iterator" id="remainingQuantity">
+      <AttrNames>
+        <Item Value="remainingQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Inventory1Iterator" id="ProductInvCount">
+      <AttrNames>
+        <Item Value="ProductInvCount"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="manageOredersPageDef"
+                Package="productSystem.ui.pages">
+  <parameters/>
+  <executables>
+    <iterator Binds="KayanOrders1" RangeSize="10" DataControl="ManageProductsAMDataControl" id="KayanOrders1Iterator" Refresh="ifNeeded"/>
+    <iterator Binds="Product1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Product1Iterator"/>
+    <iterator Binds="Customer1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Customer1Iterator"/>
+    <searchRegion Binds="Product1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Product1Query"/>
+    <iterator Binds="OrderProducts4" RangeSize="25" DataControl="ManageProductsAMDataControl"
+              id="OrderProducts2Iterator"/>
+    <searchRegion Binds="OrderProducts2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="OrderProducts2Query"/>
+    <iterator Binds="InventoryProduct2" RangeSize="25" DataControl="ManageProductsAMDataControl"
+              id="InventoryProduct2Iterator"/>
+    <searchRegion Binds="InventoryProduct2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="InventoryProduct2Query"/>
+    <iterator Binds="OrderProducts1" RangeSize="25" DataControl="ManageProductsAMDataControl"
+              id="OrderProducts1Iterator"/>
+    <iterator Binds="Orders1" RangeSize="5" DataControl="ManageProductsAMDataControl" id="Orders1Iterator"/>
+    <iterator Binds="Expenses1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Expenses1Iterator"/>
+    <iterator Binds="Expenses2" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Expenses2Iterator"/>
+    <iterator Binds="Expenses2" RangeSize="10" DataControl="ManageProductsAMDataControl" id="Expenses2Iterator1"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="OrderNumber">
+      <AttrNames>
+        <Item Value="OrderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CustomerNumber">
+      <AttrNames>
+        <Item Value="CustomerNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="OrderDetails">
+      <AttrNames>
+        <Item Value="OrderDetails"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="ShipmentDate">
+      <AttrNames>
+        <Item Value="ShipmentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="ShipmentCompany">
+      <AttrNames>
+        <Item Value="ShipmentCompany"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="ShipmentFollowupNumber">
+      <AttrNames>
+        <Item Value="ShipmentFollowupNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="KiloNumber">
+      <AttrNames>
+        <Item Value="KiloNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CartoonNumber">
+      <AttrNames>
+        <Item Value="CartoonNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CLanme">
+      <AttrNames>
+        <Item Value="CLanme"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CNumber1">
+      <AttrNames>
+        <Item Value="CNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CFname">
+      <AttrNames>
+        <Item Value="CFname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="PId">
+      <AttrNames>
+        <Item Value="PId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="KayanOrders1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="KayanOrders1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ManageProductsAMDataControl"/>
+    <tree IterBinding="Product1Iterator" id="Product1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductVO" Name="Product10">
+        <AttrNames>
+          <Item Value="PId"/>
+          <Item Value="PName"/>
+          <Item Value="PType"/>
+          <Item Value="PSize"/>
+          <Item Value="Color"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDescription"/>
+          <Item Value="PPrice"/>
+          <Item Value="PCurrency"/>
+          <Item Value="ProductNameAr"/>
+          <Item Value="SizeDetails"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Customer1Iterator" id="Customer1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.CustomerVO" Name="Customer10">
+        <AttrNames>
+          <Item Value="CNumber"/>
+          <Item Value="CFname"/>
+          <Item Value="CLanme"/>
+          <Item Value="CNationality"/>
+          <Item Value="CGander"/>
+          <Item Value="CustomerMobile"/>
+          <Item Value="CustomerAddess1"/>
+          <Item Value="CustomerAddress2"/>
+          <Item Value="CustomerType"/>
+          <Item Value="CustomerEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Product1Iterator" id="PName1">
+      <AttrNames>
+        <Item Value="PName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PType" id="PType1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PSize" id="PSize" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_Color" id="Color1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Product1Iterator" id="PPrice1">
+      <AttrNames>
+        <Item Value="PPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PCurrency" id="PCurrency1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Customer1Iterator" id="CFname1">
+      <AttrNames>
+        <Item Value="CFname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CLanme1">
+      <AttrNames>
+        <Item Value="CLanme"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerMobile">
+      <AttrNames>
+        <Item Value="CustomerMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerType">
+      <AttrNames>
+        <Item Value="CustomerType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerEmail">
+      <AttrNames>
+        <Item Value="CustomerEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="ShipmentPrice">
+      <AttrNames>
+        <Item Value="ShipmentPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="KayanOrders1Iterator" StaticList="false" Uses="LOV_OrderCountry" id="OrderCountry1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="OrderProducts2Iterator" id="OrderProducts2">
+      <nodeDefinition DefName="products.productSystem.model.uiview.OrderProductsVO" Name="OrderProducts20">
+        <AttrNames>
+          <Item Value="ProductId"/>
+          <Item Value="PName"/>
+          <Item Value="InventoryNo"/>
+          <Item Value="Location"/>
+          <Item Value="OrderQuantity"/>
+          <Item Value="Color"/>
+          <Item Value="PDescription"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PType"/>
+          <Item Value="PSize"/>
+          <Item Value="SizeDetails"/>
+          <Item Value="PPrice"/>
+          <Item Value="PCurrency"/>
+          <Item Value="SalePrice"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="InventoryProduct2Iterator" id="InventoryProduct2">
+      <nodeDefinition DefName="products.productSystem.model.uiview.InventoryProductVO" Name="InventoryProduct20">
+        <AttrNames>
+          <Item Value="InventoryId"/>
+          <Item Value="ProductId"/>
+          <Item Value="Color"/>
+          <Item Value="InStock"/>
+          <Item Value="PCurrency"/>
+          <Item Value="PDescription"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PId"/>
+          <Item Value="PName"/>
+          <Item Value="PPrice"/>
+          <Item Value="PSize"/>
+          <Item Value="PType"/>
+          <Item Value="SizeDetails"/>
+          <Item Value="Selected"/>
+          <Item Value="Quantity"/>
+          <Item Value="InventoryNo"/>
+          <Item Value="Location"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="OrderProducts2Iterator" id="Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="PId_inventory">
+      <AttrNames>
+        <Item Value="PId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="PName">
+      <AttrNames>
+        <Item Value="PName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="Location">
+      <AttrNames>
+        <Item Value="Location"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="InventoryId">
+      <AttrNames>
+        <Item Value="InventoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrderProducts1Iterator" id="OrderQuantity">
+      <AttrNames>
+        <Item Value="OrderQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="OrderProducts1Iterator" id="CreateInsert_order_product"
+            InstanceName="ManageProductsAMDataControl.OrderProducts1" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="KayanOrders1Iterator" StaticList="false" Uses="LOV_ShipmentType" id="ShipmentType"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="KayanOrders1Iterator" StaticList="false" Uses="LOV_ShipmentCurrency" id="ShipmentCurrency"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="KayanOrders1Iterator" StaticList="false" Uses="LOV_OrderCurrency" id="OrderCurrency"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CustomerEmail1">
+      <AttrNames>
+        <Item Value="CustomerEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CustomerMobile1">
+      <AttrNames>
+        <Item Value="CustomerMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="KayanOrders1Iterator" id="CustomerType1">
+      <AttrNames>
+        <Item Value="CustomerType"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="KayanOrders1Iterator" id="Execute" InstanceName="ManageProductsAMDataControl.KayanOrders1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ManageProductsAMDataControl"/>
+    <attributeValues IterBinding="OrderProducts1Iterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrderProducts1Iterator" id="ProductId_ord">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrderProducts1Iterator" id="InventoryNo_ord">
+      <AttrNames>
+        <Item Value="InventoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="OrderProducts2Iterator" id="Execute_order_product" InstanceName="ManageProductsAMDataControl.OrderProducts4"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="KayanOrders1Iterator" id="ExecuteWithParams"
+            InstanceName="ManageProductsAMDataControl.KayanOrders1" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_orderNo" NDValue="#{bindings.OrderNumber.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <tree IterBinding="Orders1Iterator" id="Orders1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.OrdersVO" Name="Orders10">
+        <AttrNames>
+          <Item Value="OrderNumber"/>
+          <Item Value="CustomerNumber"/>
+          <Item Value="CFname"/>
+          <Item Value="CLanme"/>
+          <Item Value="CustomerMobile"/>
+          <Item Value="OrderCountry"/>
+          <Item Value="OrderCurrency"/>
+          <Item Value="KiloNumber"/>
+          <Item Value="OrderStatus"/>
+          <Item Value="LastModifiedBy"/>
+          <Item Value="ModificationDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CrDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="KayanOrders1Iterator" id="ExecuteWithParams1" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="p_orderNo" NDValue="#{bindings.OrderNumber_all}" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="Orders1Iterator" id="OrderNumber_all">
+      <AttrNames>
+        <Item Value="OrderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Orders1Iterator" id="Execute_all_orders" InstanceName="ManageProductsAMDataControl.Orders1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="InventoryQuantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="InventoryProduct2Iterator" id="Execute_inventory_product"
+            InstanceName="ManageProductsAMDataControl.InventoryProduct2" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="InventoryProduct2Iterator" id="InStock">
+      <AttrNames>
+        <Item Value="InStock"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="OrderProducts2Iterator" id="Delete_Product_Order" InstanceName="ManageProductsAMDataControl.OrderProducts4"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="OrderProducts2Iterator" id="InventoryId_ord2">
+      <AttrNames>
+        <Item Value="InventoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrderProducts2Iterator" id="ProductId_ord2">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrderProducts2Iterator" id="OrderQuantity1">
+      <AttrNames>
+        <Item Value="OrderQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="KayanOrders1Iterator" StaticList="false" Uses="LOV_OrderStatus" id="OrderStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="OrderProducts2Iterator" id="SalePrice">
+      <AttrNames>
+        <Item Value="SalePrice"/>
+      </AttrNames>
+    </attributeValues>
+    <tree id="Expenses1" IterBinding="Expenses2Iterator1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ExpensesVO" Name="Expenses10">
+        <AttrNames>
+          <Item Value="ExpensesNo"/>
+          <Item Value="Cooments"/>
+          <Item Value="Currency"/>
+          <Item Value="ExpensesCost"/>
+          <Item Value="ExpenseType"/>
+          <Item Value="OrderNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Expenses2Iterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Expenses2Iterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

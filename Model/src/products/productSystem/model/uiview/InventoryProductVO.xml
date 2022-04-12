@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InventoryProductVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="InventoryProductEO.INVENTORY_ID, 
+       InventoryProductEO.PRODUCT_ID, 
+       ProductEO.COLOR, 
+       ProductEO.IN_STOCK, 
+       ProductEO.P_CURRENCY, 
+       ProductEO.P_DESCRIPTION, 
+       ProductEO.P_DESIGN_SHAPE, 
+       ProductEO.P_DESIGN_TYPE, 
+       ProductEO.P_ID, 
+       ProductEO.P_NAME, 
+       ProductEO.P_PRICE, 
+       ProductEO.P_SIZE, 
+       ProductEO.P_TYPE, 
+       ProductEO.SIZE_DETAILS, 
+       InventoryProductEO.QUANTITY, 
+       InventoryEO.LOCATION, 
+       InventoryEO.INVENTORY_NO"
+  FromList="INVENTORY_PRODUCT InventoryProductEO, PRODUCT ProductEO, INVENTORY InventoryEO"
+  Where="ProductEO.P_ID = InventoryProductEO.PRODUCT_ID   
+and InventoryProductEO.INVENTORY_ID = InventoryEO.INVENTORY_NO">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="products.productSystem.model.uiview.InventoryProductVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ManageProductsAM_ProductType1_1"
+    ViewObjectName="products.productSystem.model.uiview.ProductTypeVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="ProductType1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_ProductSize1_1"
+    ViewObjectName="products.productSystem.model.uiview.ProductSizeVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="ProductSize1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_Currency1_1"
+    ViewObjectName="products.productSystem.model.uiview.CurrencyVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Currency1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManageProductsAM_Colors1_1"
+    ViewObjectName="products.productSystem.model.uiview.ColorsVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Colors1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_PType"
+    ListVOName="ManageProductsAM_ProductType1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TypeNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TypeNameAr"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PSize"
+    ListVOName="ManageProductsAM_ProductSize1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PSize"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SizeNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SizeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PCurrency"
+    ListVOName="ManageProductsAM_Currency1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PCurrency"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CurrencyCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CurrencyApprv"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Color"
+    ListVOName="ManageProductsAM_Colors1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Color"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ColorNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ColorNameAr"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="InventoryProductEO"
+    Entity="products.productSystem.model.entity.InventoryProductEO"/>
+  <EntityUsage
+    Name="ProductEO"
+    Entity="products.productSystem.model.entity.ProductEO"
+    DeleteParticipant="false"
+    ReadOnly="true">
+    <DesignTime>
+      <Attr Name="_customjoin" Value="true"/>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="InventoryEO"
+    Entity="products.productSystem.model.entity.InventoryEO"
+    ReadOnly="true"
+    DeleteParticipant="false">
+    <DesignTime>
+      <Attr Name="_customjoin" Value="true"/>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="InventoryId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="InventoryId"
+    EntityUsage="InventoryProductEO"
+    AliasName="INVENTORY_ID"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="InventoryProductEO"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="Color"
+    PrecisionRule="true"
+    EntityAttrName="Color"
+    EntityUsage="ProductEO"
+    AliasName="COLOR"
+    LOVName="LOV_Color">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InStock"
+    PrecisionRule="true"
+    EntityAttrName="InStock"
+    EntityUsage="ProductEO"
+    AliasName="IN_STOCK"/>
+  <ViewAttribute
+    Name="PCurrency"
+    PrecisionRule="true"
+    EntityAttrName="PCurrency"
+    EntityUsage="ProductEO"
+    AliasName="P_CURRENCY"
+    LOVName="LOV_PCurrency">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PDescription"
+    PrecisionRule="true"
+    EntityAttrName="PDescription"
+    EntityUsage="ProductEO"
+    AliasName="P_DESCRIPTION"/>
+  <ViewAttribute
+    Name="PDesignShape"
+    PrecisionRule="true"
+    EntityAttrName="PDesignShape"
+    EntityUsage="ProductEO"
+    AliasName="P_DESIGN_SHAPE"/>
+  <ViewAttribute
+    Name="PDesignType"
+    PrecisionRule="true"
+    EntityAttrName="PDesignType"
+    EntityUsage="ProductEO"
+    AliasName="P_DESIGN_TYPE"/>
+  <ViewAttribute
+    Name="PId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="PId"
+    EntityUsage="ProductEO"
+    AliasName="P_ID"/>
+  <ViewAttribute
+    Name="PName"
+    PrecisionRule="true"
+    EntityAttrName="PName"
+    EntityUsage="ProductEO"
+    AliasName="P_NAME"/>
+  <ViewAttribute
+    Name="PPrice"
+    PrecisionRule="true"
+    EntityAttrName="PPrice"
+    EntityUsage="ProductEO"
+    AliasName="P_PRICE"/>
+  <ViewAttribute
+    Name="PSize"
+    PrecisionRule="true"
+    EntityAttrName="PSize"
+    EntityUsage="ProductEO"
+    AliasName="P_SIZE"
+    LOVName="LOV_PSize">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PType"
+    PrecisionRule="true"
+    EntityAttrName="PType"
+    EntityUsage="ProductEO"
+    AliasName="P_TYPE"
+    LOVName="LOV_PType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SizeDetails"
+    PrecisionRule="true"
+    EntityAttrName="SizeDetails"
+    EntityUsage="ProductEO"
+    AliasName="SIZE_DETAILS"/>
+  <ViewAttribute
+    Name="Selected"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"/>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="InventoryProductEO"
+    AliasName="QUANTITY"/>
+  <ViewAttribute
+    Name="Location"
+    PrecisionRule="true"
+    EntityAttrName="Location"
+    EntityUsage="InventoryEO"
+    AliasName="LOCATION"/>
+  <ViewAttribute
+    Name="InventoryNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="InventoryNo"
+    EntityUsage="InventoryEO"
+    AliasName="INVENTORY_NO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="products.productSystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductFk1Assoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="ProductType"
+    Cardinality="1"
+    Source="true"
+    Owner="products.productSystem.model.entity.ProductTypeEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="ProductType"/>
+      <Attr Name="_foreignKey" Value="products.productSystem.model.entity.ProductTypeEO.ProductTypePk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.ProductTypeEO.TypeNo"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Product"
+    Cardinality="-1"
+    Owner="products.productSystem.model.entity.ProductEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Product"/>
+      <Attr Name="_foreignKey" Value="products.productSystem.model.entity.ProductEO.ProductFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.ProductEO.PType"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

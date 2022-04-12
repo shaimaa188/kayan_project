@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductGroupVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="products.productSystem.model.uiview.ProductGroupVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="ProductGroupEO"
+    Entity="products.productSystem.model.entity.ProductGroupEO"/>
+  <ViewAttribute
+    Name="GroupId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="GroupId"
+    EntityUsage="ProductGroupEO"
+    AliasName="GROUP_ID"/>
+  <ViewAttribute
+    Name="GroupName"
+    PrecisionRule="true"
+    EntityAttrName="GroupName"
+    EntityUsage="ProductGroupEO"
+    AliasName="GROUP_NAME"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="products.productSystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

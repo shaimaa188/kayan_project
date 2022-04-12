@@ -1,0 +1,15 @@
+//Groovy Scripts for products.productSystem.model.uiview.KayanOrdersVO
+
+package products.productSystem.model.uiview
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+
+
+
+@VariableExpression(path="p_orderNo")
+def p_orderNo_VariableScript_Variable()
+{
+adf.context.current.sessionScope.p_orderNo
+}
+

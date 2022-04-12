@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="manageCustomers">
+    <page>/productSystem/ui/pages/manageCustomers.jsf</page>
+  </view>
+  <view id="manageInventories">
+    <page>/productSystem/ui/pages/manageInventories.jsf</page>
+  </view>
+  <view id="manageOrders">
+    <page>/productSystem/ui/pages/manageOrders.jsf</page>
+  </view>
+  <view id="manageProducts">
+    <page>/productSystem/ui/pages/manageProducts.jsf</page>
+  </view>
+  <view id="main">
+    <page>/productSystem/ui/pages/main.jsf</page>
+  </view>
+  <control-flow-rule id="__9">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>mngCustomer</from-outcome>
+      <to-activity-id>manageCustomers</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__12">
+      <from-outcome>mngOrders</from-outcome>
+      <to-activity-id>manageOrders</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>mngInventories</from-outcome>
+      <to-activity-id>manageInventories</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__1">
+      <from-outcome>mngProducts</from-outcome>
+      <to-activity-id>manageProducts</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__2">
+      <from-outcome>main</from-outcome>
+      <to-activity-id>main</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__6">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__7">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__8">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

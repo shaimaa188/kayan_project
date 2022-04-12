@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <metadata-resource id="__3">/WEB-INF/menu.xml</metadata-resource>
+  <managed-bean id="__1">
+    <managed-bean-name>svBean</managed-bean-name>
+    <managed-bean-class>product.productSystem.view.beans.SvBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>ManageOrders</managed-bean-name>
+    <managed-bean-class>product.productSystem.view.beans.ManageOrders</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductStockDistributionTrxEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="PRODUCT_STOCK_DISTRIBUTION_TRX"
+  AliasName="ProductStockDistributionTrxE1"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="StockTrx"
+    ColumnName="STOCK_TRX"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="PId"
+    ColumnName="P_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX"/>
+  <Attribute
+    Name="InvId"
+    ColumnName="INV_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX"/>
+  <Attribute
+    Name="ProductQty"
+    ColumnName="PRODUCT_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX"/>
+  <Attribute
+    Name="StockQty"
+    ColumnName="STOCK_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX"/>
+  <Attribute
+    Name="TrxType"
+    Precision="100"
+    ColumnName="TRX_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PRODUCT_STOCK_DISTRIBUTION_TRX">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="ProductInventoryDistribuPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRODUCT_INVENTORY_DISTRIBU_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.ProductStockDistributionTrxEO.StockTrx"/>
+    </AttrArray>
+  </Key>
+</Entity>

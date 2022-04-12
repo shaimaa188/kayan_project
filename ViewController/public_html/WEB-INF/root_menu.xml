@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_main" label="#{bnd.main}" action="main" focusViewId="/main"/>
+  <itemNode id="itemNode_manageProducts" label="#{bnd.manage_products}" action="mngProducts"
+            focusViewId="/manageProducts"/>
+  <itemNode id="itemNode_manageCustomers" label="#{bnd.manage_customer}" action="mngCustomer"
+            focusViewId="/manageCustomers"/>
+  <itemNode id="itemNode_manageInventories" label="#{bnd.manage_inventories}" action="mngInventories"
+            focusViewId="/manageInventories"/>
+  <itemNode id="itemNode_manageOrders" label="#{bnd.manage_orders}" action="mngOrders" focusViewId="/manageOrders"/>
+</menu>

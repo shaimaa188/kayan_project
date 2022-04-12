@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OrderStatusEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="ORDER_STATUS"
+  AliasName="OrderStatusEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="StatusNo"
+    IsNotNull="true"
+    ColumnName="STATUS_NO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="ORDER_STATUS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="StatusAr"
+    Precision="100"
+    ColumnName="STATUS_AR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ORDER_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="100"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ORDER_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="OrderStatusPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ORDER_STATUS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.OrderStatusEO.StatusNo"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="manageProductsPageDef"
+                Package="productSystem.ui.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Product1" RangeSize="10" DataControl="ManageProductsAMDataControl" id="Product1Iterator"/>
+    <iterator Binds="ProductSize1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="ProductSize1Iterator"/>
+    <iterator Binds="Colors1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Colors1Iterator"/>
+    <iterator Binds="ProductType1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="ProductType1Iterator"/>
+    <iterator Binds="Category1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Category1Iterator"/>
+    <iterator Binds="ProductGroup1" RangeSize="10" DataControl="ManageProductsAMDataControl"
+              id="ProductGroup1Iterator"/>
+    <iterator Binds="ProductDetails1" RangeSize="25" DataControl="ManageProductsAMDataControl"
+              id="ProductDetails1Iterator"/>
+    <searchRegion Binds="Product1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Product1Query"/>
+    <iterator Binds="ProductStockDistributionTrx3" RangeSize="25" DataControl="ManageProductsAMDataControl"
+              id="ProductStockDistributionTrx3Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Product1Iterator" id="Product1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductVO" Name="Product10">
+        <AttrNames>
+          <Item Value="PId"/>
+          <Item Value="PName"/>
+          <Item Value="PType"/>
+          <Item Value="GroupId"/>
+          <Item Value="PSize"/>
+          <Item Value="Color"/>
+          <Item Value="Quantity"/>
+          <Item Value="PDesignType"/>
+          <Item Value="PDesignShape"/>
+          <Item Value="PDescription"/>
+          <Item Value="PPrice"/>
+          <Item Value="PCurrency"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CrDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="SizeDetails"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Product1Iterator" id="PName">
+      <AttrNames>
+        <Item Value="PName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PType" id="PType" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Product1Iterator" id="PDesignType">
+      <AttrNames>
+        <Item Value="PDesignType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="PDesignShape">
+      <AttrNames>
+        <Item Value="PDesignShape"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="PPrice">
+      <AttrNames>
+        <Item Value="PPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PCurrency" id="PCurrency" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Product1Iterator" id="ProductNameAr">
+      <AttrNames>
+        <Item Value="ProductNameAr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="CrDate">
+      <AttrNames>
+        <Item Value="CrDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="LastUpdateDate">
+      <AttrNames>
+        <Item Value="LastUpdateDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Product1Iterator" id="SizeDetails">
+      <AttrNames>
+        <Item Value="SizeDetails"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductSize1Iterator" id="ProductSize1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductSizeVO" Name="ProductSize10">
+        <AttrNames>
+          <Item Value="SizeNo"/>
+          <Item Value="SizeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Colors1Iterator" id="Colors1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ColorsVO" Name="Colors10">
+        <AttrNames>
+          <Item Value="ColorNo"/>
+          <Item Value="ColorName"/>
+          <Item Value="ColorNameAr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ProductType1Iterator" id="ProductType1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductTypeVO" Name="ProductType10">
+        <AttrNames>
+          <Item Value="TypeNo"/>
+          <Item Value="TypeName"/>
+          <Item Value="CategoryNo"/>
+          <Item Value="TypeNameAr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Category1Iterator" id="Category1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.CategoryVO" Name="Category10">
+        <AttrNames>
+          <Item Value="CategoryNo"/>
+          <Item Value="CategoryName"/>
+          <Item Value="CategoryNameAr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+    <action id="Rollback" DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="Product1Iterator" id="CreateInsert" InstanceName="ManageProductsAMDataControl.Product1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Product1Iterator" id="Delete" InstanceName="ManageProductsAMDataControl.Product1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="ProductSize1Iterator" id="CreateInsert1"
+            InstanceName="ManageProductsAMDataControl.ProductSize1" DataControl="ManageProductsAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ProductSize1Iterator" id="Delete1" InstanceName="ManageProductsAMDataControl.ProductSize1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="Colors1Iterator" id="CreateInsert2" InstanceName="ManageProductsAMDataControl.Colors1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Colors1Iterator" id="Delete2" InstanceName="ManageProductsAMDataControl.Colors1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="Category1Iterator" id="CreateInsert3" InstanceName="ManageProductsAMDataControl.Category1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Category1Iterator" id="Delete3" InstanceName="ManageProductsAMDataControl.Category1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="Product1Iterator" id="Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_GroupId" id="GroupId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="ProductGroup1Iterator" id="ProductGroup1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductGroupVO" Name="ProductGroup10">
+        <AttrNames>
+          <Item Value="GroupId"/>
+          <Item Value="GroupName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductGroup1Iterator" id="CreateInsert4" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ProductGroup1Iterator" id="Delete4" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="ProductDetails1Iterator" id="ProductDetails1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductDetailsVO" Name="ProductDetails10">
+        <AttrNames>
+          <Item Value="QuntityId"/>
+          <Item Value="PColor"/>
+          <Item Value="PSize"/>
+          <Item Value="Comments"/>
+          <Item Value="Quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProductDetails1Iterator" id="CreateInsert5" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ProductDetails1Iterator" id="Delete5" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="Product1Iterator" id="PDescription">
+      <AttrNames>
+        <Item Value="PDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_Color" id="Color" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Product1Iterator" StaticList="false" Uses="LOV_PSize" id="PSize" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Product1Iterator" id="PId">
+      <AttrNames>
+        <Item Value="PId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ProductStockDistributionTrx3Iterator" id="ProductStockDistributionTrx3">
+      <nodeDefinition DefName="products.productSystem.model.uiview.ProductStockDistributionTrxVO"
+                      Name="ProductStockDistributionTrx30">
+        <AttrNames>
+          <Item Value="InvId"/>
+          <Item Value="Location"/>
+          <Item Value="PId"/>
+          <Item Value="PName"/>
+          <Item Value="ProductQty"/>
+          <Item Value="StockQty"/>
+          <Item Value="TrxType"/>
+          <Item Value="Quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

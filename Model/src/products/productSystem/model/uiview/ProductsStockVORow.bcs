@@ -1,0 +1,12 @@
+//Groovy Scripts for products.productSystem.model.uiview.ProductsStockVO
+
+package products.productSystem.model.uiview
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="remainingQuantity")
+def remainingQuantity_ExpressionScript_Expression()
+{
+Quantity-InStock
+}
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InventoryProductsLinkVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="products.productSystem.model.viewLink.InventoryProductsLinkVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="Inventory"
+    Cardinality="1"
+    Source="true"
+    Owner="products.productSystem.model.uiview.InventoryVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="Inventory"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.uiview.InventoryVO.InventoryNo"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="InventoryProduct"
+    Cardinality="-1"
+    Owner="products.productSystem.model.uiview.InventoryProductVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="InventoryProduct"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.uiview.InventoryProductVO.InventoryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="products.productSystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

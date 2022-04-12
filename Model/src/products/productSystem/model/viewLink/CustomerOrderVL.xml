@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerOrderVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="products.productSystem.model.viewLink.CustomerOrderVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="KayanOrders"
+    Cardinality="1"
+    Source="true"
+    Owner="products.productSystem.model.uiview.KayanOrdersVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="KayanOrders"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.uiview.KayanOrdersVO.CNumber"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Customer"
+    Cardinality="-1"
+    Owner="products.productSystem.model.uiview.CustomerVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="Customer"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.uiview.CustomerVO.CNumber"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="products.productSystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

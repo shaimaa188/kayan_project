@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="product.productSystem.view" ClientType="Generic">
+  <pageMap>
+    <page path="/productSystem/ui/pages/manageOrders.jsf" usageId="product_productSystem_view_manageOredersPageDef"/>
+    <page path="/productSystem/ui/pages/manageCustomers.jsf"
+          usageId="product_productSystem_view_manageCustomersPageDef"/>
+    <page path="/productSystem/ui/pages/manageProducts.jsf" usageId="product_productSystem_view_manageProductsPageDef"/>
+    <page path="/productSystem/ui/pages/manageInventories.jsf"
+          usageId="product_productSystem_view_manageInventoriesPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="product_productSystem_view_manageOredersPageDef" path="productSystem.ui.pages.manageOredersPageDef"/>
+    <page id="product_productSystem_view_manageCustomersPageDef" path="productSystem.ui.pages.manageCustomersPageDef"/>
+    <page id="product_productSystem_view_manageProductsPageDef" path="productSystem.ui.pages.manageProductsPageDef"/>
+    <page id="product_productSystem_view_manageInventoriesPageDef"
+          path="productSystem.ui.pages.manageInventoriesPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ManageProductsAMDataControl" Package="products.productSystem.model.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ManageProductsAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

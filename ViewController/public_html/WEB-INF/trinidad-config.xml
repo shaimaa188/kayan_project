@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="windows-1256"?>
+<trinidad-config xmlns="http://myfaces.apache.org/trinidad/config">
+  
+  <right-to-left>true</right-to-left>
+  <skin-family>skin1</skin-family>
+  
+</trinidad-config>

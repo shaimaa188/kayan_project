@@ -1,0 +1,786 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="manageProducts.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/productSystem/ui/pages/mytemplate.jsf" id="pt2">
+                <f:facet name="bodyFacet">
+                    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+                        <af:showDetailItem id="tab1" text="#{bnd.manage_products}">
+                            <af:panelGroupLayout  id="pgl1" layout="vertical" inlineStyle="background-color:white;">
+                                <af:spacer id="s5" inlineStyle="height:20px;" height="28"/>
+                                <af:panelGroupLayout id="pgl5" layout="vertical"
+                                                     inlineStyle="border-color:#8C7676; border-style:inset; border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; border-top-left-radius:5px 5px; border-top-right-radius:5px 5px; border-width:1px; background-color:#f3f1ef;">
+                                    <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center"
+                                                         inlineStyle="height:51px;">
+                                        <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                                   disabled="#{!bindings.CreateInsert.enabled}" id="b2" shortDesc="#{bnd.create_insert}"
+                                                   text="#{bnd.create_insert}"/>
+                                        <af:button id="b1" actionListener="#{bindings.Delete.execute}"
+                                                   disabled="#{!bindings.Delete.enabled}"
+                                                   shortDesc="#{bnd.detele}"
+                                                   text="#{bnd.detele}">
+                                            <af:showPopupBehavior popupId="dlt_msg_p1"/>
+                                        </af:button>
+                                        <af:button actionListener="#{bindings.Commit.execute}" text="#{bnd.commit}"
+                                                   id="b4"/>
+                                        <af:button actionListener="#{bindings.Rollback.execute}" text="#{bnd.rollback}"
+                                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                        <f:facet name="separator">
+                                            <af:spacer id="s4" inlineStyle="width:10px;" width="2"/>
+                                        </f:facet>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl2" halign="center" layout="vertical"
+                                                         styleClass="AFStretchWidth">
+                                        <af:panelSplitter id="ps1" splitterPosition="300" styleClass="AFStretchWidth"
+                                                          inlineStyle="padding:10px; margin-left:10px; margin-right:10px;">
+                                            <f:facet name="first">
+                                                <af:showDetailHeader text="#{bindings.PId.inputValue}" disclosed="true"
+                                                                     id="sdh1"
+                                                                     inlineStyle="border-color:#8C7676; border-style:inset; border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; border-top-left-radius:5px 5px; border-top-right-radius:5px 5px; border-width:1px; background-color:#f3f1ef;  ">
+                                                    <f:facet name="info"/>
+                                                    <af:panelGroupLayout id="pgl4" valign="top" layout="horizontal">
+                                                        <af:panelFormLayout id="pfl3" labelWidth="100">
+                                                            <af:inputText value="#{bindings.PName.inputValue}"
+                                                                          label="#{bnd.product_name}"
+                                                                          required="#{bindings.PName.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.PName.hints.precision}"
+                                                                          shortDesc="#{bindings.PName.hints.tooltip}"
+                                                                          id="it7">
+                                                                <f:validator binding="#{bindings.PName.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.PDesignShape.inputValue}"
+                                                                          label="#{bnd.design_shape}"
+                                                                          required="#{bindings.PDesignShape.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.PDesignShape.hints.precision}"
+                                                                          shortDesc="#{bindings.PDesignShape.hints.tooltip}"
+                                                                          id="it13">
+                                                                <f:validator binding="#{bindings.PDesignShape.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.Quantity.inputValue}"
+                                                                          label="#{bnd.quantity}"
+                                                                          required="#{bindings.Quantity.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.Quantity.hints.precision}"
+                                                                          shortDesc="#{bindings.Quantity.hints.tooltip}"
+                                                                          id="it1">
+                                                                <f:validator binding="#{bindings.Quantity.validator}"/>
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.Quantity.format}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.PPrice.inputValue}"
+                                                                          label="#{bnd.price}"
+                                                                          required="#{bindings.PPrice.hints.mandatory}"
+                                                                          columns="#{bindings.PPrice.hints.displayWidth}"
+                                                                          maximumLength="#{bindings.PPrice.hints.precision}"
+                                                                          shortDesc="#{bindings.PPrice.hints.tooltip}"
+                                                                          id="it9">
+                                                                <f:validator binding="#{bindings.PPrice.validator}"/>
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.PPrice.format}"/>
+                                                            </af:inputText>
+                                                            <af:spacer width="10" height="0" id="s7"/>
+                                                            <af:selectOneChoice value="#{bindings.PCurrency.inputValue}"
+                                                                                label="#{bnd.currency}"
+                                                                                required="#{bindings.PCurrency.hints.mandatory}"
+                                                                                shortDesc="#{bindings.PCurrency.hints.tooltip}"
+                                                                                id="soc12"
+                                                                                inlineStyle="margin-bottom:5px; margin-top:5px; padding-top:10px; padding-bottom:10px;">
+                                                                <f:selectItems value="#{bindings.PCurrency.items}"
+                                                                               id="si12"/>
+                                                                <f:validator binding="#{bindings.PCurrency.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:inputText value="#{bindings.PDesignType.inputValue}"
+                                                                          label="#{bnd.design_type}"
+                                                                          required="#{bindings.PDesignType.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.PDesignType.hints.precision}"
+                                                                          shortDesc="#{bindings.PDesignType.hints.tooltip}"
+                                                                          id="it14">
+                                                                <f:validator binding="#{bindings.PDesignType.validator}"/>
+                                                            </af:inputText>
+                                                            <af:spacer width="10" height="10" id="s12"/>
+                                                            <af:selectOneChoice value="#{bindings.PType.inputValue}"
+                                                                                label="#{bnd.product_type}"
+                                                                                required="#{bindings.PType.hints.mandatory}"
+                                                                                shortDesc="#{bindings.PType.hints.tooltip}"
+                                                                                id="soc7">
+                                                                <f:selectItems value="#{bindings.PType.items}"
+                                                                               id="si7"/>
+                                                                <f:validator binding="#{bindings.PType.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:spacer width="10" height="1" id="s11"/>
+                                                            <af:selectOneChoice value="#{bindings.GroupId.inputValue}"
+                                                                                label="#{bnd.group_name}"
+                                                                                required="#{bindings.GroupId.hints.mandatory}"
+                                                                                shortDesc="#{bindings.GroupId.hints.tooltip}"
+                                                                                id="soc1">
+                                                                <f:selectItems value="#{bindings.GroupId.items}"
+                                                                               id="si1"/>
+                                                                <f:validator binding="#{bindings.GroupId.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:spacer width="10" height="1" id="s8"/>
+                                                            <af:selectOneChoice value="#{bindings.PSize.inputValue}"
+                                                                                label="#{bnd.product_size}"
+                                                                                required="#{bindings.PSize.hints.mandatory}"
+                                                                                shortDesc="#{bindings.PSize.hints.tooltip}"
+                                                                                id="soc9">
+                                                                <f:selectItems value="#{bindings.PSize.items}"
+                                                                               id="si9"/>
+                                                                <f:validator binding="#{bindings.PSize.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:spacer width="10" height="1" id="s9"/>
+                                                            <af:selectOneChoice value="#{bindings.Color.inputValue}"
+                                                                                label="#{bnd.color}"
+                                                                                required="#{bindings.Color.hints.mandatory}"
+                                                                                shortDesc="#{bindings.Color.hints.tooltip}"
+                                                                                id="soc8">
+                                                                <f:selectItems value="#{bindings.Color.items}"
+                                                                               id="si8"/>
+                                                                <f:validator binding="#{bindings.Color.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:inputText value="#{bindings.SizeDetails.inputValue}"
+                                                                          label="#{bnd.size_details}"
+                                                                          required="#{bindings.SizeDetails.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.SizeDetails.hints.precision}"
+                                                                          shortDesc="#{bindings.SizeDetails.hints.tooltip}"
+                                                                          id="it12">
+                                                                <f:validator binding="#{bindings.SizeDetails.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.PDescription.inputValue}"
+                                                                          label="#{bnd.description}"
+                                                                          required="#{bindings.PDescription.hints.mandatory}"
+                                                                          columns="20"
+                                                                          maximumLength="#{bindings.PDescription.hints.precision}"
+                                                                          shortDesc="#{bindings.PDescription.hints.tooltip}"
+                                                                          id="it8" rows="3">
+                                                                <f:validator binding="#{bindings.PDescription.validator}"/>
+                                                            </af:inputText>
+                                                        </af:panelFormLayout>
+                                                    </af:panelGroupLayout>
+                                                </af:showDetailHeader>
+                                            </f:facet>
+                                            <f:facet name="second">
+                                                <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                                                    <f:facet name="menus"/>
+                                                    <f:facet name="toolbar"/>
+                                                    <af:table scrollPolicy="scroll"
+                                                              value="#{bindings.Product1.collectionModel}" var="row"
+                                                              rows="#{bindings.Product1.rangeSize}"
+                                                              emptyText="#{bindings.Product1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                              rowBandingInterval="0"
+                                                              fetchSize="#{bindings.Product1.rangeSize}" id="t1"
+                                                              partialTriggers=":::b2 :::b1 :::b15"
+                                                              selectedRowKeys="#{bindings.Product1.collectionModel.selectedRow}"
+                                                              selectionListener="#{bindings.Product1.collectionModel.makeCurrent}"
+                                                              rowSelection="single"
+                                                              filterModel="#{bindings.Product1Query.queryDescriptor}"
+                                                              filterVisible="true"
+                                                              queryListener="#{bindings.Product1Query.processQuery}"
+                                                              varStatus="vs">
+                                                        <af:column headerText="#{bnd.product_id}" id="c1"
+                                                                   sortProperty="#{bindings.Product1.hints.PId.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PId}"
+                                                                           shortDesc="#{bindings.Product1.hints.PId.tooltip}"
+                                                                           id="ot11">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.Product1.hints.PId.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.product_name}" id="c2"
+                                                                   sortProperty="#{bindings.Product1.hints.PName.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PName}"
+                                                                           shortDesc="#{bindings.Product1.hints.PName.tooltip}"
+                                                                           id="ot3"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.product_type}" id="c3"
+                                                                   sortProperty="#{bindings.Product1.hints.PType.name}"
+                                                                   filterable="true">
+                                                            <af:selectOneChoice readOnly="true"
+                                                                                value="#{row.bindings.PType.inputValue}"
+                                                                                label="#{row.bindings.PType.label}"
+                                                                                required="#{bindings.Product1.hints.PType.mandatory}"
+                                                                                shortDesc="#{bindings.Product1.hints.PType.tooltip}"
+                                                                                id="soc6">
+                                                                <f:selectItems value="#{row.bindings.PType.items}"
+                                                                               id="si6"/>
+                                                                <f:validator binding="#{row.bindings.PType.validator}"/>
+                                                            </af:selectOneChoice>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.group_name}" id="c30"
+                                                                   sortProperty="#{bindings.Product1.hints.GroupId.name}"
+                                                                   filterable="true">
+                                                            <af:selectOneChoice readOnly="true"
+                                                                                value="#{row.bindings.GroupId.inputValue}"
+                                                                                label="#{row.bindings.GroupId.label}"
+                                                                                required="#{bindings.Product1.hints.GroupId.mandatory}"
+                                                                                shortDesc="#{bindings.Product1.hints.GroupId.tooltip}"
+                                                                                id="soc3">
+                                                                <f:selectItems value="#{row.bindings.GroupId.items}"
+                                                                               id="si3"/>
+                                                                <f:validator binding="#{row.bindings.GroupId.validator}"/>
+                                                            </af:selectOneChoice>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.product_size}" id="c4"
+                                                                   sortProperty="#{bindings.Product1.hints.PSize.name}"
+                                                                   filterable="true">
+                                                            <af:selectOneChoice readOnly="true"
+                                                                                value="#{row.bindings.PSize.inputValue}"
+                                                                                label="#{row.bindings.PSize.label}"
+                                                                                required="#{bindings.Product1.hints.PSize.mandatory}"
+                                                                                shortDesc="#{bindings.Product1.hints.PSize.tooltip}"
+                                                                                id="soc5">
+                                                                <f:selectItems value="#{row.bindings.PSize.items}"
+                                                                               id="si5"/>
+                                                                <f:validator binding="#{row.bindings.PSize.validator}"/>
+                                                            </af:selectOneChoice>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.color}" id="c5"
+                                                                   sortProperty="#{bindings.Product1.hints.Color.name}"
+                                                                   filterable="true">
+                                                            <af:selectOneChoice readOnly="true"
+                                                                                value="#{row.bindings.Color.inputValue}"
+                                                                                label="#{row.bindings.Color.label}"
+                                                                                required="#{bindings.Product1.hints.Color.mandatory}"
+                                                                                shortDesc="#{bindings.Product1.hints.Color.tooltip}"
+                                                                                id="soc2">
+                                                                <f:selectItems value="#{row.bindings.Color.items}"
+                                                                               id="si2"/>
+                                                                <f:validator binding="#{row.bindings.Color.validator}"/>
+                                                            </af:selectOneChoice>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.quantity}" id="c31"
+                                                                   sortProperty="#{bindings.Product1.hints.Quantity.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.Quantity}"
+                                                                           shortDesc="#{bindings.Product1.hints.Quantity.tooltip}"
+                                                                           id="ot18">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.Product1.hints.Quantity.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.design_type}" id="c6"
+                                                                   sortProperty="#{bindings.Product1.hints.PDesignType.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PDesignType}"
+                                                                           shortDesc="#{bindings.Product1.hints.PDesignType.tooltip}"
+                                                                           id="ot8"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.design_shape}" id="c7"
+                                                                   sortProperty="#{bindings.Product1.hints.PDesignShape.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PDesignShape}"
+                                                                           shortDesc="#{bindings.Product1.hints.PDesignShape.tooltip}"
+                                                                           id="ot7"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.description}" id="c8"
+                                                                   sortProperty="#{bindings.Product1.hints.PDescription.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PDescription}"
+                                                                           shortDesc="#{bindings.Product1.hints.PDescription.tooltip}"
+                                                                           id="ot6"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.price}" id="c9"
+                                                                   sortProperty="#{bindings.Product1.hints.PPrice.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.PPrice}"
+                                                                           shortDesc="#{bindings.Product1.hints.PPrice.tooltip}"
+                                                                           id="ot12">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.Product1.hints.PPrice.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.currency}" id="c10"
+                                                                   sortProperty="#{bindings.Product1.hints.PCurrency.name}"
+                                                                   filterable="true">
+                                                            <af:selectOneChoice readOnly="true"
+                                                                                value="#{row.bindings.PCurrency.inputValue}"
+                                                                                label="#{row.bindings.PCurrency.label}"
+                                                                                required="#{bindings.Product1.hints.PCurrency.mandatory}"
+                                                                                shortDesc="#{bindings.Product1.hints.PCurrency.tooltip}"
+                                                                                id="soc10">
+                                                                <f:selectItems value="#{row.bindings.PCurrency.items}"
+                                                                               id="si10"/>
+                                                                <f:validator binding="#{row.bindings.PCurrency.validator}"/>
+                                                            </af:selectOneChoice>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.created_by}" id="c12"
+                                                                   sortProperty="#{bindings.Product1.hints.CreatedBy.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.CreatedBy}"
+                                                                           shortDesc="#{bindings.Product1.hints.CreatedBy.tooltip}"
+                                                                           id="ot1"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.cr_date}" id="c13"
+                                                                   sortProperty="#{bindings.Product1.hints.CrDate.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.CrDate}"
+                                                                           shortDesc="#{bindings.Product1.hints.CrDate.tooltip}"
+                                                                           id="ot5">
+                                                                <af:convertDateTime pattern="#{bindings.Product1.hints.CrDate.format}"/>
+                                                            </af:outputText>
+                                                            <f:facet name="filter">
+                                                                <af:inputDate value="#{bindings.Product1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CrDate.value}"
+                                                                              id="id1">
+                                                                    <af:convertDateTime pattern="#{bindings.Product1.hints.CrDate.format}"/>
+                                                                </af:inputDate>
+                                                            </f:facet>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.last_updated_by}" id="c14"
+                                                                   sortProperty="#{bindings.Product1.hints.LastUpdatedBy.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.LastUpdatedBy}"
+                                                                           shortDesc="#{bindings.Product1.hints.LastUpdatedBy.tooltip}"
+                                                                           id="ot10"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.last_update_date}" id="c15"
+                                                                   sortProperty="#{bindings.Product1.hints.LastUpdateDate.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.LastUpdateDate}"
+                                                                           shortDesc="#{bindings.Product1.hints.LastUpdateDate.tooltip}"
+                                                                           id="ot2">
+                                                                <af:convertDateTime pattern="#{bindings.Product1.hints.LastUpdateDate.format}"/>
+                                                            </af:outputText>
+                                                            <f:facet name="filter">
+                                                                <af:inputDate value="#{bindings.Product1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.LastUpdateDate.value}"
+                                                                              id="id2">
+                                                                    <af:convertDateTime pattern="#{bindings.Product1.hints.LastUpdateDate.format}"/>
+                                                                </af:inputDate>
+                                                            </f:facet>
+                                                        </af:column>
+                                                        <af:column headerText="#{bnd.size_details}" id="c16"
+                                                                   sortProperty="#{bindings.Product1.hints.SizeDetails.name}"
+                                                                   filterable="true">
+                                                            <af:outputText value="#{row.SizeDetails}"
+                                                                           shortDesc="#{bindings.Product1.hints.SizeDetails.tooltip}"
+                                                                           id="ot4"/>
+                                                        </af:column>
+                                                    </af:table>
+                                                    <f:facet name="statusbar"/>
+                                                </af:panelCollection>
+                                            </f:facet>
+                                        </af:panelSplitter>
+                                        <f:facet name="separator">
+                                            <af:spacer id="s3"/>
+                                        </f:facet>
+                                    </af:panelGroupLayout>
+                                    <af:spacer width="10" height="10" id="s10"/>
+                                </af:panelGroupLayout>
+                                <f:facet name="separator">
+                                    <af:spacer id="s1"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <af:showDetailHeader text="showDetailHeader 1" disclosed="true" id="sdh2">
+                                <f:facet name="context"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                                <af:panelCollection id="pc7">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.ProductStockDistributionTrx3.collectionModel}" var="row"
+                                              rows="#{bindings.ProductStockDistributionTrx3.rangeSize}"
+                                              emptyText="#{bindings.ProductStockDistributionTrx3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              fetchSize="#{bindings.ProductStockDistributionTrx3.rangeSize}" id="t12"
+                                              selectedRowKeys="#{bindings.ProductStockDistributionTrx3.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.ProductStockDistributionTrx3.collectionModel.makeCurrent}"
+                                              rowSelection="single">
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.InvId.label}"
+                                                   id="c32">
+                                            <af:outputText value="#{row.InvId}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.InvId.tooltip}"
+                                                           id="ot9">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductStockDistributionTrx3.hints.InvId.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.Location.label}"
+                                                   id="c33">
+                                            <af:outputText value="#{row.Location}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.Location.tooltip}"
+                                                           id="ot17"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.PId.label}"
+                                                   id="c34">
+                                            <af:outputText value="#{row.PId}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.PId.tooltip}"
+                                                           id="ot21">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductStockDistributionTrx3.hints.PId.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.PName.label}"
+                                                   id="c35">
+                                            <af:outputText value="#{row.PName}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.PName.tooltip}"
+                                                           id="ot14"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.ProductQty.label}"
+                                                   id="c36">
+                                            <af:outputText value="#{row.ProductQty}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.ProductQty.tooltip}"
+                                                           id="ot13">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductStockDistributionTrx3.hints.ProductQty.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.StockQty.label}"
+                                                   id="c37">
+                                            <af:outputText value="#{row.StockQty}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.StockQty.tooltip}"
+                                                           id="ot20">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductStockDistributionTrx3.hints.StockQty.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.TrxType.label}"
+                                                   id="c38">
+                                            <af:outputText value="#{row.TrxType}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.TrxType.tooltip}"
+                                                           id="ot15"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ProductStockDistributionTrx3.hints.Quantity.label}"
+                                                   id="c39">
+                                            <af:outputText value="#{row.Quantity}"
+                                                           shortDesc="#{bindings.ProductStockDistributionTrx3.hints.Quantity.tooltip}"
+                                                           id="ot19">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ProductStockDistributionTrx3.hints.Quantity.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:showDetailHeader>
+                        </af:showDetailItem>
+                        <af:showDetailItem id="tab2" text="#{bnd.manage_product_list}">
+                            <af:panelGroupLayout id="pgl8" layout="vertical"
+                                                 inlineStyle="border-color:#8C7676; border-style:inset; border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; border-top-left-radius:5px 5px; border-top-right-radius:5px 5px; border-width:1px; background-color:#f3f1ef;">
+                                <f:facet name="separator">
+                                    <af:spacer id="s2" height="35"/>
+                                </f:facet>
+                                <af:panelGroupLayout id="pgl6" layout="horizontal" halign="center"
+                                                     inlineStyle="height:50px; width:115px;">
+                                    <af:button actionListener="#{bindings.Commit.execute}" text="#{bnd.commit}"
+                                               id="b13"/>
+                                    <af:spacer id="s6"/>
+                                    <af:button actionListener="#{bindings.Rollback.execute}" text="#{bnd.rollback}"
+                                               disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b14">
+                                        <af:resetActionListener/>
+                                    </af:button>
+                                </af:panelGroupLayout>
+                                <af:panelAccordion discloseMany="false" id="pa1" styleClass="AFStretchWidth"
+                                                   inlineStyle="background-color:#f3f1ef;">
+                                    <af:showDetailItem id="pane1" text="#{bnd.product_size}">
+                                        <af:panelCollection id="pc2">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t6">
+                                                    <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                                                               text="#{bnd.create_insert}"
+                                                               disabled="#{!bindings.CreateInsert1.enabled}" id="b5"/>
+                                                    <af:button actionListener="#{bindings.Delete1.execute}"
+                                                               text="#{bnd.detele}"
+                                                               disabled="#{!bindings.Delete1.enabled}" id="b6"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.ProductSize1.collectionModel}" var="row"
+                                                      rows="#{bindings.ProductSize1.rangeSize}"
+                                                      emptyText="#{bindings.ProductSize1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      fetchSize="#{bindings.ProductSize1.rangeSize}" id="t5"
+                                                      editingMode="clickToEdit" partialTriggers="::b5 ::b6">
+                                                <af:column headerText="#{bnd.number}" id="c27">
+                                                    <af:inputText value="#{row.bindings.SizeNo.inputValue}"
+                                                                  label="#{bindings.ProductSize1.hints.SizeNo.label}"
+                                                                  required="#{bindings.ProductSize1.hints.SizeNo.mandatory}"
+                                                                  columns="#{bindings.ProductSize1.hints.SizeNo.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductSize1.hints.SizeNo.precision}"
+                                                                  shortDesc="#{bindings.ProductSize1.hints.SizeNo.tooltip}"
+                                                                  id="it26">
+                                                        <f:validator binding="#{row.bindings.SizeNo.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ProductSize1.hints.SizeNo.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.size_details}" id="c28" width="150">
+                                                    <af:inputText value="#{row.bindings.SizeName.inputValue}"
+                                                                  label="#{bindings.ProductSize1.hints.SizeName.label}"
+                                                                  required="#{bindings.ProductSize1.hints.SizeName.mandatory}"
+                                                                  columns="#{bindings.ProductSize1.hints.SizeName.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductSize1.hints.SizeName.precision}"
+                                                                  shortDesc="#{bindings.ProductSize1.hints.SizeName.tooltip}"
+                                                                  id="it27">
+                                                        <f:validator binding="#{row.bindings.SizeName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="pane2" text="#{bnd.color}">
+                                        <af:panelCollection id="pc3">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t7">
+                                                    <af:button actionListener="#{bindings.CreateInsert2.execute}"
+                                                               text="#{bnd.create_insert}"
+                                                               disabled="#{!bindings.CreateInsert2.enabled}" id="b7"/>
+                                                    <af:button actionListener="#{bindings.Delete2.execute}"
+                                                               text="#{bnd.detele}"
+                                                               disabled="#{!bindings.Delete2.enabled}" id="b8"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.Colors1.collectionModel}" var="row"
+                                                      rows="#{bindings.Colors1.rangeSize}"
+                                                      emptyText="#{bindings.Colors1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0" fetchSize="#{bindings.Colors1.rangeSize}"
+                                                      id="t4" editingMode="clickToEdit" partialTriggers="::b7 ::b8">
+                                                <af:column headerText="#{bnd.number}" id="c24">
+                                                    <af:inputText value="#{row.bindings.ColorNo.inputValue}"
+                                                                  label="#{bindings.Colors1.hints.ColorNo.label}"
+                                                                  required="#{bindings.Colors1.hints.ColorNo.mandatory}"
+                                                                  columns="#{bindings.Colors1.hints.ColorNo.displayWidth}"
+                                                                  maximumLength="#{bindings.Colors1.hints.ColorNo.precision}"
+                                                                  shortDesc="#{bindings.Colors1.hints.ColorNo.tooltip}"
+                                                                  id="it23">
+                                                        <f:validator binding="#{row.bindings.ColorNo.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.Colors1.hints.ColorNo.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.color}" id="c25" width="150">
+                                                    <af:inputText value="#{row.bindings.ColorName.inputValue}"
+                                                                  label="#{bindings.Colors1.hints.ColorName.label}"
+                                                                  required="#{bindings.Colors1.hints.ColorName.mandatory}"
+                                                                  columns="#{bindings.Colors1.hints.ColorName.displayWidth}"
+                                                                  maximumLength="#{bindings.Colors1.hints.ColorName.precision}"
+                                                                  shortDesc="#{bindings.Colors1.hints.ColorName.tooltip}"
+                                                                  id="it24">
+                                                        <f:validator binding="#{row.bindings.ColorName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.color_ar}" id="c26" width="150">
+                                                    <af:inputText value="#{row.bindings.ColorNameAr.inputValue}"
+                                                                  label="#{bindings.Colors1.hints.ColorNameAr.label}"
+                                                                  required="#{bindings.Colors1.hints.ColorNameAr.mandatory}"
+                                                                  columns="#{bindings.Colors1.hints.ColorNameAr.displayWidth}"
+                                                                  maximumLength="#{bindings.Colors1.hints.ColorNameAr.precision}"
+                                                                  shortDesc="#{bindings.Colors1.hints.ColorNameAr.tooltip}"
+                                                                  id="it25">
+                                                        <f:validator binding="#{row.bindings.ColorNameAr.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="pane3" text="#{bnd.product_category}">
+                                        <af:panelCollection id="pc5">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t8">
+                                                    <af:button actionListener="#{bindings.CreateInsert3.execute}"
+                                                               text="#{bnd.create_insert}"
+                                                               disabled="#{!bindings.CreateInsert3.enabled}" id="b9"/>
+                                                    <af:button actionListener="#{bindings.Delete3.execute}"
+                                                               text="#{bnd.detele}"
+                                                               disabled="#{!bindings.Delete3.enabled}" id="b10"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.Category1.collectionModel}" var="row"
+                                                      rows="#{bindings.Category1.rangeSize}"
+                                                      emptyText="#{bindings.Category1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0" fetchSize="#{bindings.Category1.rangeSize}"
+                                                      id="t2" filterVisible="true" editingMode="clickToEdit"
+                                                      partialTriggers="::b9 ::b10 :::pc4:b11 :::pc4:b12">
+                                                <af:column headerText="#{bnd.number}" id="c17">
+                                                    <af:inputText value="#{row.bindings.CategoryNo.inputValue}"
+                                                                  label="#{bindings.Category1.hints.CategoryNo.label}"
+                                                                  required="#{bindings.Category1.hints.CategoryNo.mandatory}"
+                                                                  columns="#{bindings.Category1.hints.CategoryNo.displayWidth}"
+                                                                  maximumLength="#{bindings.Category1.hints.CategoryNo.precision}"
+                                                                  shortDesc="#{bindings.Category1.hints.CategoryNo.tooltip}"
+                                                                  id="it17">
+                                                        <f:validator binding="#{row.bindings.CategoryNo.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.Category1.hints.CategoryNo.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.category_name}" id="c18">
+                                                    <af:inputText value="#{row.bindings.CategoryName.inputValue}"
+                                                                  label="#{bindings.Category1.hints.CategoryName.label}"
+                                                                  required="#{bindings.Category1.hints.CategoryName.mandatory}"
+                                                                  columns="#{bindings.Category1.hints.CategoryName.displayWidth}"
+                                                                  maximumLength="#{bindings.Category1.hints.CategoryName.precision}"
+                                                                  shortDesc="#{bindings.Category1.hints.CategoryName.tooltip}"
+                                                                  id="it18">
+                                                        <f:validator binding="#{row.bindings.CategoryName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.category_name_ar}" id="c19">
+                                                    <af:inputText value="#{row.bindings.CategoryNameAr.inputValue}"
+                                                                  label="#{bindings.Category1.hints.CategoryNameAr.label}"
+                                                                  required="#{bindings.Category1.hints.CategoryNameAr.mandatory}"
+                                                                  columns="#{bindings.Category1.hints.CategoryNameAr.displayWidth}"
+                                                                  maximumLength="#{bindings.Category1.hints.CategoryNameAr.precision}"
+                                                                  shortDesc="#{bindings.Category1.hints.CategoryNameAr.tooltip}"
+                                                                  id="it19">
+                                                        <f:validator binding="#{row.bindings.CategoryNameAr.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem id="pane4" text="#{bnd.product_type}">
+                                        <af:panelCollection id="pc4" inlineStyle="width:584px;">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t9">
+                                                    <af:button actionListener="#{bindings.CreateInsert3.execute}"
+                                                               text="#{bnd.create_insert}"
+                                                               disabled="#{!bindings.CreateInsert3.enabled}" id="b11"/>
+                                                    <af:button actionListener="#{bindings.Delete3.execute}"
+                                                               text="#{bnd.detele}"
+                                                               disabled="#{!bindings.Delete3.enabled}" id="b12"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.ProductType1.collectionModel}" var="row"
+                                                      rows="#{bindings.ProductType1.rangeSize}"
+                                                      emptyText="#{bindings.ProductType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      fetchSize="#{bindings.ProductType1.rangeSize}" id="t3"
+                                                      filterVisible="true" editingMode="clickToEdit" width="599">
+                                                <af:column headerText="#{bnd.number}" id="c20" width="100">
+                                                    <af:inputText value="#{row.bindings.TypeNo.inputValue}"
+                                                                  label="#{bindings.ProductType1.hints.TypeNo.label}"
+                                                                  required="#{bindings.ProductType1.hints.TypeNo.mandatory}"
+                                                                  columns="#{bindings.ProductType1.hints.TypeNo.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductType1.hints.TypeNo.precision}"
+                                                                  shortDesc="#{bindings.ProductType1.hints.TypeNo.tooltip}"
+                                                                  id="it20">
+                                                        <f:validator binding="#{row.bindings.TypeNo.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ProductType1.hints.TypeNo.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.type_name}" id="c21" width="150">
+                                                    <af:inputText value="#{row.bindings.TypeName.inputValue}"
+                                                                  label="#{bindings.ProductType1.hints.TypeName.label}"
+                                                                  required="#{bindings.ProductType1.hints.TypeName.mandatory}"
+                                                                  columns="#{bindings.ProductType1.hints.TypeName.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductType1.hints.TypeName.precision}"
+                                                                  shortDesc="#{bindings.ProductType1.hints.TypeName.tooltip}"
+                                                                  id="it21">
+                                                        <f:validator binding="#{row.bindings.TypeName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.type_name_ar}" id="c23" width="150">
+                                                    <af:inputText value="#{row.bindings.TypeNameAr.inputValue}"
+                                                                  label="#{bindings.ProductType1.hints.TypeNameAr.label}"
+                                                                  required="#{bindings.ProductType1.hints.TypeNameAr.mandatory}"
+                                                                  columns="#{bindings.ProductType1.hints.TypeNameAr.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductType1.hints.TypeNameAr.precision}"
+                                                                  shortDesc="#{bindings.ProductType1.hints.TypeNameAr.tooltip}"
+                                                                  id="it22">
+                                                        <f:validator binding="#{row.bindings.TypeNameAr.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.category_name}" id="c22" width="150">
+                                                    <af:selectOneChoice value="#{row.bindings.CategoryNo.inputValue}"
+                                                                        label="#{row.bindings.CategoryNo.label}"
+                                                                        required="#{bindings.ProductType1.hints.CategoryNo.mandatory}"
+                                                                        shortDesc="#{bindings.ProductType1.hints.CategoryNo.tooltip}"
+                                                                        id="soc4">
+                                                        <f:selectItems value="#{row.bindings.CategoryNo.items}"
+                                                                       id="si4"/>
+                                                        <f:validator binding="#{row.bindings.CategoryNo.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:showDetailItem>
+                                    <af:showDetailItem text="#{bnd.product_group}" id="sdi1">
+                                        <af:panelCollection id="pc6">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t11">
+                                                    <af:button actionListener="#{bindings.CreateInsert4.execute}"
+                                                               text="#{bnd.create_insert}"
+                                                               disabled="#{!bindings.CreateInsert4.enabled}" id="b17"/>
+                                                    <af:button actionListener="#{bindings.Delete4.execute}"
+                                                               text="#{bnd.detele}"
+                                                               disabled="#{!bindings.Delete4.enabled}" id="b18"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table editingMode="clickToEdit" scrollPolicy="scroll"
+                                                      value="#{bindings.ProductGroup1.collectionModel}" var="row"
+                                                      rows="#{bindings.ProductGroup1.rangeSize}"
+                                                      emptyText="#{bindings.ProductGroup1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      fetchSize="#{bindings.ProductGroup1.rangeSize}" id="t10"
+                                                      partialTriggers="::b17 ::b18">
+                                                <af:column headerText="#{bnd.group_id}" id="c11">
+                                                    <af:inputText value="#{row.bindings.GroupId.inputValue}"
+                                                                  label="#{bindings.ProductGroup1.hints.GroupId.label}"
+                                                                  required="#{bindings.ProductGroup1.hints.GroupId.mandatory}"
+                                                                  columns="#{bindings.ProductGroup1.hints.GroupId.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductGroup1.hints.GroupId.precision}"
+                                                                  shortDesc="#{bindings.ProductGroup1.hints.GroupId.tooltip}"
+                                                                  id="it2">
+                                                        <f:validator binding="#{row.bindings.GroupId.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ProductGroup1.hints.GroupId.format}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                                <af:column headerText="#{bnd.group_name}" id="c29" width="300">
+                                                    <af:inputText value="#{row.bindings.GroupName.inputValue}"
+                                                                  label="#{bindings.ProductGroup1.hints.GroupName.label}"
+                                                                  required="#{bindings.ProductGroup1.hints.GroupName.mandatory}"
+                                                                  columns="#{bindings.ProductGroup1.hints.GroupName.displayWidth}"
+                                                                  maximumLength="#{bindings.ProductGroup1.hints.GroupName.precision}"
+                                                                  shortDesc="#{bindings.ProductGroup1.hints.GroupName.tooltip}"
+                                                                  id="it3">
+                                                        <f:validator binding="#{row.bindings.GroupName.validator}"/>
+                                                    </af:inputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </af:showDetailItem>
+                                </af:panelAccordion>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                    </af:panelTabbed>
+                    <af:popup childCreation="deferred" autoCancel="disabled" id="dlt_msg_p1"
+                              binding="#{svBean.delete_msg_popup}">
+                        <af:panelWindow id="pw1">
+                            <af:panelGroupLayout id="pgl7" layout="vertical" halign="center">
+                                <af:outputText id="ot16" inlineStyle="font-size:x-large;"
+                                               value="#{bnd.Delete_message}"/>
+                                <af:panelGroupLayout id="pgl9" layout="horizontal"
+                                                     inlineStyle="width:226px; height:59px;">
+                                    <af:button text="#{bnd.detele}" id="b15" action="#{svBean.deleteAction}"/>
+                                    <af:button text="#{bnd.cancel}" id="b16"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelWindow>
+                    </af:popup>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:svBean-->
+</f:view>

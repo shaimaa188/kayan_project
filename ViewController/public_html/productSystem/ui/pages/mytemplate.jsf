@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>mytemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>bodyFacet</afc:facet-name>
+            </afc:facet>
+            <afc:attribute>
+                <afc:attribute-name>Tıtle</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelStretchLayout id="pt_psl1" inlineStyle="background-color:white;" topHeight="70px">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top">
+            <af:panelGroupLayout id="pt_pgl2" layout="vertical" halign="center" >
+                <af:panelGroupLayout id="pt_pgl3" layout="horizontal"
+                                     inlineStyle="background-repeat:no-repeat; background-attachment:scroll; background-origin:padding-box; background-clip:content-box; background-color:#a89f96;"
+                                     styleClass="AFStretchWidth">
+                    <af:spacer width="10" height="30" id="pt_s1"/>
+                </af:panelGroupLayout>
+                <af:navigationPane hint="buttons" id="pt_np1" value="#{root_menu}" var="p_sys">
+                    <f:facet name="nodeStamp">
+                        <af:commandNavigationItem text="#{p_sys.label}" id="pt_cni1" action="#{p_sys.doAction}"
+                                                  
+                                                  styleClass="custom_nave_pane_button"
+                                                  inlineStyle="background-color:#a89f96; border-color:#a89f96;"/>
+                    </f:facet>
+                </af:navigationPane>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelGroupLayout id="pt_pgl1" layout="vertical" halign="center" valign="middle"
+                                 inlineStyle="border-color:#8C7676; border-style:inset; border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; border-top-left-radius:5px 5px; border-top-right-radius:5px 5px; border-width:1px; background-color:#F7F7F7;">
+                <af:facetRef facetName="bodyFacet"/>
+            </af:panelGroupLayout>
+        </f:facet>
+    </af:panelStretchLayout>
+</af:pageTemplateDef>

@@ -1,0 +1,498 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+af|button {
+    background-color: #8C7676; 
+    color:   #8C7676;
+    border: 1px solid #8C7676; 
+        border-style: groove; 
+    background-repeat: no-repeat; 
+    font-weight: bolder; 
+    font-size: 13px; 
+    width: 100px; 
+    height: 30px; 
+    text-align: center; 
+    min-height: 27px; 
+}
+
+@agent (touchScreen:none) {
+
+    af|button:hover {
+        background-color: #8C7676; 
+        color: white;
+        font-weight: bolder; 
+        font-size: 13px; 
+        width: 100px; 
+        height: 30px; 
+        text-align: center; 
+        min-height: 27px; 
+        
+    }
+
+}
+
+af|commandButton {
+    background-color: #8C7676; 
+    background-image: linear-gradient(to top, #E4E8EA 0%, #E8EBED 50%, #f1f3f4 96.36%, #FFFFFF 100%); 
+    background-origin: padding-box; 
+    width: 100px; 
+    height: 20px; 
+}
+
+af|commandButton:hover {
+    background-color: #8C7676; 
+    background-image: linear-gradient(to top, #E4E8EA 0%, #E8EBED 50%, #f1f3f4 96.36%, #FFFFFF 100%); 
+    background-origin: padding-box; 
+    width: 100px; 
+    height: 20px; 
+}
+
+
+
+af|inputText::label {
+    color:#8C7676; 
+    font-size: 16px; 
+    font-weight: bolder; 
+}
+
+af|inputDate::label {
+    color: #8C7676; 
+    font-size: 16px; 
+    font-weight: bolder; 
+}
+
+af|inputDate:disabled::label {
+    color:#8C7676; 
+}
+
+af|inputListOfValues::label {
+    color:#8C7676; 
+}
+
+af|inputListOfValues:disabled::label {
+    color:#8C7676; 
+}
+
+af|inputText:disabled::label {
+    color:#8C7676; 
+}
+
+af|selectOneChoice::label {
+    color:  #8C7676; 
+    font-size: 16px; 
+    font-weight: bolder; 
+}
+
+af|selectOneChoice:disabled::label {
+    color:  #8C7676; 
+}
+
+af|navigationPane-tabs {
+    display: inline; 
+    appearance: normal; 
+    width: 100%; 
+}
+
+af|panelWindow::header {
+
+
+    background-repeat: no-repeat;; 
+        
+        }
+
+af|panelWindow::header-end {
+   background-color: #0062dd; 
+
+    background-repeat: no-repeat;
+}
+
+af|panelWindow::header-start {
+    background-color: #0062dd; 
+}
+
+af|body:high-contrast af|panelWindow::header {
+    background-color: #0062dd; 
+    background: #0062dd; 
+}
+
+
+
+af|panelWindow {
+    background-color: #f7f7f7; 
+        }
+
+af|inputText::content {
+    font-size: 14px; 
+    font-weight: bold; 
+    }
+
+af|inputDate::content {
+    font-weight: bold; 
+    font-size: 14px; 
+}
+
+af|panelBox::header-element {
+    font-size: 2ex; 
+    font-family: Arial; 
+}
+
+af|panelTabbed::tab-text-link {
+    font-size: 16px; 
+    font-weight: bold; 
+    border: none medium #8C7676; 
+    border-color: #8C7676; 
+    color: #8C7676   ; 
+}
+
+af|panelTabbed {
+    font-size: medium; 
+    font-weight: bolder; 
+    border-top-left-radius: 5px 5px; 
+    border-top-right-radius: 5px 5px; 
+}
+
+af|table af|column::column-header-cell 
+{   
+height:35px;
+color:white; 
+text-align: center;
+font-size: 14px;
+font-family:'OpenSans-Bold';  
+font-weight: bold;
+background-image: none;
+background-color: #a89f96;
+vertical-align: middle;
+}
+af|table::data-table-VH-lines af|column::data-cell
+{
+background-color: transparent;
+color: Black;
+font-size:12px;
+font-family: Arial;
+height:30px;
+vertical-align: middle;
+    font-weight: bold; 
+}
+
+af|navigationPane-bar {
+    font-size: large; 
+}
+
+/*af|panelTabbed::tab {
+    border: 1px ridge #a89f96; 
+    font-weight: bold; 
+    color: #a89f96; 
+      
+}
+
+af|panelTabbed::header:selected
+{
+  background-color:#a89f96 ;
+  color: White;
+   border: none ;
+   border-color:#a89f96 ;
+   
+}*/
+
+
+af|panelTabbed::body {
+    border: 1px outset #a89f96; 
+}
+
+af|panelHeader::icon-style {
+    height: 35px; 
+    width: 40px; 
+    margin: 10px 10px 10px 10px; 
+}
+
+af|dvt-pivotFilterBar::filter {
+    background-color: #a89f96; 
+}
+
+af|dvt-pivotFilterBar::filters-container {
+    background-color: #a89f96; 
+}
+
+af|table::navbar {
+    background-color: #a89f96
+    ; 
+    color: White; 
+}
+
+af|table::navbar-current-page {
+    color: White; 
+}
+
+af|table::navbar-first-page-icon {
+    color: White; 
+}
+
+af|table::navbar-first-page-icon-style {
+    color: White; 
+}
+
+af|table::navbar-gap-page {
+    color: White; 
+}
+
+af|table::navbar-last-page-icon {
+    color: White; 
+}
+
+af|table::navbar-last-page-icon-style {
+    color: White; 
+}
+
+af|table::navbar-next-page-icon {
+    color: White; 
+}
+
+af|table::navbar-page-link {
+    color: White; 
+}
+
+af|table::navbar-separator {
+    color: White; 
+}
+
+af|table::record-range-footer {
+    color: White; 
+}
+
+af|table::navbar-next-page-icon-style {
+    color: White; 
+}
+
+af|table::navbar-previous-page-icon-style {
+    color: White; 
+}
+
+af|table::navbar-row-range-text {
+    color: White; 
+}
+
+af|table::undisclosed-icon {
+    color: White; 
+}
+
+af|table::undisclosed-icon-style{
+    color: White; 
+}
+
+af|panelTabbed::icon-style{
+    height: 10px; 
+    width: 10px; 
+}
+
+af|selectOne Radio::label {
+    color: #636363; 
+    font-size: large; 
+}
+
+af|selectOneRadio::item-text {
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+af|selectOneChoice::content {
+    font-size: 14px; 
+    font-weight: bold; 
+    color: #636363; 
+}
+
+
+af|commandButton:active {
+    background-color: #636363; 
+    border-color: #525252; 
+}
+
+/*it will be applied on header of tab*/
+af|panelTabbed::header
+{
+  background-color:  transparent;
+  border-color:#8C7676 ;
+   
+}
+ 
+/*it will be applied on selected header of tab*/
+af|panelTabbed::header:selected
+{
+  background-color:#8C7676;
+  color: White;
+   border: outset;
+    border-color: #EEC373; 
+    border-width: 10px; 
+   border-color:#8C7676 ;
+   
+}
+ 
+/*af|panelTabbed::tab-start, af|panelTabbed::tab-end,  af|panelTabbed::tab:hover af|panelTabbed::tab-start, af|panelTabbed::tab:hover af|panelTabbed::tab-end  {
+    background-image:none !important;
+   background-color:#8C7676  !important;
+   color:#8C7676 !important;
+   border: none ;
+   border-color:transparent;
+}*/
+ 
+/*af|panelTabbed::tab:selected af|panelTabbed::tab-content, af|panelTabbed::tab:selected:hover af|panelTabbed::tab-content {
+  background-color:#8C7676;
+  color:White;
+  background: none;
+   border: none ;
+   border-color:transparent;
+ 
+}*/
+af|panelTabbed::tab:hover af|panelTabbed::tab-content {
+     background-color: #8C7676;
+     color :#EEC373;
+     background: none ;
+ 
+}
+
+
+ 
+/*it will be applied on text in tab of panelTabbed */
+af|panelTabbed::tab af|panelTabbed::tab-text-link {
+    font-size:14px;
+    font-weight:bold;
+    color:#8C7676 ;
+    line-height:16px;
+}
+ 
+/*it will be applied on text in selected tab of panelTabbed */
+af|panelTabbed::tab:selected af|panelTabbed::tab-text-link {
+    color:White;
+    border: none;
+    font-size:14px;
+    font-weight:bold;
+    
+    line-height:16px;
+}
+ 
+ 
+af|panelTabbed::tab.p_AFSelected af|panelTabbed::tab-content, af|panelTabbed::tab.p_AFSelected:hover af|panelTabbed::tab-content af|panelTabbed::tab-text-link 
+{
+background-color:#8C7676 ;
+color: White;
+
+}
+ 
+af|panelTabbed::tab.p_AFSelected af|panelTabbed::tab-end, af|panelTabbed::tab.p_AFSelected:hover af|panelTabbed::tab-end af|panelTabbed::tab-text-link 
+{
+background-color: transparent;
+ background-image:none;
+ color :#EEC373;
+ border: outset;
+    border-color: #EEC373; 
+    border-width: 10px; 
+ 
+}
+
+af|panelTabbed::tab-content {
+    border: ridge; 
+}
+
+af|selectOneChoice {
+    width: 20px; 
+}
+
+.custom_button {
+    background-color:#8C7676;
+    background-repeat:no-repeat;
+    background-image:none;
+    color:White; 
+    border-radius:50px 50px 50px 50px / 50px 50px 50px 50px ;
+    width:37px; text-align:center; 
+    border-style:none;
+    height:37px;
+    font-size:x-large; 
+    padding-top:0px; 
+    line-height:25px;
+    border-bottom-left-radius: 50px; 
+    border-bottom-right-radius: 50px; 
+    border-top-left-radius: 50px; 
+    border:  medium currentColor; 
+    border-top-right-radius: 50px; 
+    
+    
+}
+
+.custom_button_dlt{
+    
+    background-color:#8C7676; 
+    background-repeat:no-repeat; 
+    color:White;
+    width:37px; text-align:center; border-style:none; 
+    height:37px; font-size:x-large; 
+    font-weight:lighter; 
+    padding-top:0px; 
+    line-height:25px; 
+    background-position:50% 50%;
+    background-size:25px 25px;
+    }
+    
+.custom_nave_pane_button{
+
+background-color:#a89f96;
+color:#8C7676;
+border:solid solid solid solid 
+1px 1px 1px 1px #8C7676 #8C7676 #8C7676 #8C7676; border-style:groove; 
+background-repeat:no-repeat; font-weight:bolder; 
+font-size:13px; width:150px; height:40px; 
+text-align:center; min-height:27px; 
+border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; 
+border-color:#8C7676;
+}
+
+.custom_nave_pane_button:active{
+
+background-color:#a89f96;
+color:#8C7676;
+border:solid solid solid solid 
+1px 1px 1px 1px #8C7676 #8C7676 #8C7676 #8C7676; border-style:groove; 
+background-repeat:no-repeat; font-weight:bolder; 
+font-size:13px; width:150px; height:40px; 
+text-align:center; min-height:27px; 
+border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; 
+border-color:#8C7676;
+}
+
+.custom_nave_pane_button:hover{
+
+background-color:#a89f96;
+color:white;
+border:solid solid solid solid 
+1px 1px 1px 1px #a89f96 #a89f96 #a89f96 #a89f96; border-style:groove; 
+background-repeat:no-repeat; font-weight:bolder; 
+font-size:13px; width:150px; height:40px; 
+text-align:center; min-height:27px; 
+border-radius:2px 2px 2px 2px / 2px 2px 2px 2px ; 
+border-color:#8C7676;
+
+}
+
+
+
+
+/*af|navigationPane-buttons {
+    background-color: #8C7676; 
+}*/
+
+af|commandNavigationItem {
+    }
+
+af|commandNavigationItem::access-key {
+    background-color: #8C7676; 
+}
+
+af|navigationPane-buttons {
+        }
+
+af|commandNavigationItem:busy {
+    background-color: #8C7676; 
+}
+
+af|navigationPane {
+    }

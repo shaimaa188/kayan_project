@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="manageCustomersPageDef"
+                Package="productSystem.ui.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Customer1" RangeSize="25" DataControl="ManageProductsAMDataControl" id="Customer1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Customer1Iterator" id="Customer1">
+      <nodeDefinition DefName="products.productSystem.model.uiview.CustomerVO" Name="Customer10">
+        <AttrNames>
+          <Item Value="CNumber"/>
+          <Item Value="CFname"/>
+          <Item Value="CLanme"/>
+          <Item Value="CNationality"/>
+          <Item Value="CGander"/>
+          <Item Value="CustomerMobile"/>
+          <Item Value="CustomerAddess1"/>
+          <Item Value="CustomerAddress2"/>
+          <Item Value="CustomerType"/>
+          <Item Value="CustomerEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Customer1Iterator" id="CNumber">
+      <AttrNames>
+        <Item Value="CNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CFname">
+      <AttrNames>
+        <Item Value="CFname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CLanme">
+      <AttrNames>
+        <Item Value="CLanme"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CNationality">
+      <AttrNames>
+        <Item Value="CNationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CGander">
+      <AttrNames>
+        <Item Value="CGander"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerMobile">
+      <AttrNames>
+        <Item Value="CustomerMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerAddess1">
+      <AttrNames>
+        <Item Value="CustomerAddess1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerAddress2">
+      <AttrNames>
+        <Item Value="CustomerAddress2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerType">
+      <AttrNames>
+        <Item Value="CustomerType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Customer1Iterator" id="CustomerEmail">
+      <AttrNames>
+        <Item Value="CustomerEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Customer1Iterator" id="CreateInsert" InstanceName="ManageProductsAMDataControl.Customer1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" DataControl="ManageProductsAMDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+    <action id="Rollback" DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="Customer1Iterator" id="Delete" InstanceName="ManageProductsAMDataControl.Customer1"
+            DataControl="ManageProductsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InventoryVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="ManageProductsAM_Inventory1_1"
+    ViewObjectName="products.productSystem.model.uiview.InventoryVO"
+    AMUsageName="ManageProductsAM"
+    ViewInstanceName="Inventory1"
+    RowLevelBinds="true"/>
+  <SQLQuery><![CDATA[SELECT InventoryEO.INVENTORY_NO,                   
+       InventoryEO.LOCATION,                  
+       (select count(INVENTORY_ID) from INVENTORY_PRODUCT              
+       where InventoryEO.INVENTORY_NO = INVENTORY_ID)  as product_inv_count ,    
+          
+       (select NVL(sum(QUANTITY),0)from INVENTORY_PRODUCT              
+       where InventoryEO.INVENTORY_NO = INVENTORY_ID)  as product_inv_sum          
+                        
+FROM  INVENTORY InventoryEO]]></SQLQuery>
+  <EntityUsage
+    Name="InventoryEO"
+    Entity="products.productSystem.model.entity.InventoryEO"/>
+  <ViewAttribute
+    Name="InventoryNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="InventoryNo"
+    EntityUsage="InventoryEO"
+    AliasName="INVENTORY_NO"/>
+  <ViewAttribute
+    Name="Location"
+    PrecisionRule="true"
+    EntityAttrName="Location"
+    EntityUsage="InventoryEO"
+    AliasName="LOCATION"/>
+  <ViewAttribute
+    Name="ProductInvCount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRODUCT_INV_COUNT"
+    Expression="PRODUCT_INV_COUNT"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ProductInvSum"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRODUCT_INV_SUM"
+    Expression="PRODUCT_INV_SUM"
+    SQLType="NUMERIC"/>
+  <ViewLinkAccessor
+    Name="InventoryProduct"
+    ViewLink="products.productSystem.model.viewLink.InventoryProductsLinkVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

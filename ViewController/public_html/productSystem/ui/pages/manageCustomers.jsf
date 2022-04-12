@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="manageCustomers.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:spacer id="s2"/>
+            <af:pageTemplate viewId="/productSystem/ui/pages/mytemplate.jsf" id="pt1">
+                <f:facet name="bodyFacet">
+                    <af:panelGroupLayout id="pgl2" layout="horizontal" inlineStyle="height:86px; width:450px;"
+                                         halign="center">
+                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="#{bnd.create_insert}"
+                                   disabled="#{!bindings.CreateInsert.enabled}" id="b1"/>
+                        <af:button text="#{bnd.detele}" id="b2">
+                            <af:showPopupBehavior popupId="dlt_msg_p1"/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="#{bnd.commit}" id="b3"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="#{bnd.rollback}"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <f:facet name="separator">
+                            <af:spacer id="s3"/>
+                        </f:facet>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top" halign="center"
+                                         inlineStyle="width:663px; height:232px;">
+                        <af:panelFormLayout id="pfl2" labelAlignment="start" labelWidth="100">
+                            <af:inputText value="#{bindings.CFname.inputValue}" label="#{bnd.customer_fname}"
+                                          required="#{bindings.CFname.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CFname.hints.precision}"
+                                          shortDesc="#{bindings.CFname.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.CFname.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CLanme.inputValue}" label="#{bnd.customer_lname}"
+                                          required="#{bindings.CLanme.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CLanme.hints.precision}"
+                                          shortDesc="#{bindings.CLanme.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.CLanme.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CNationality.inputValue}"
+                                          label="#{bnd.customer_nationality}"
+                                          required="#{bindings.CNationality.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CNationality.hints.precision}"
+                                          shortDesc="#{bindings.CNationality.hints.tooltip}" id="it4">
+                                <f:validator binding="#{bindings.CNationality.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.CNationality.format}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CGander.inputValue}" label="#{bnd.customer_gander}"
+                                          required="#{bindings.CGander.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CGander.hints.precision}"
+                                          shortDesc="#{bindings.CGander.hints.tooltip}" id="it5">
+                                <f:validator binding="#{bindings.CGander.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CustomerMobile.inputValue}"
+                                          label="#{bnd.customer_mobile_no}"
+                                          required="#{bindings.CustomerMobile.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CustomerMobile.hints.precision}"
+                                          shortDesc="#{bindings.CustomerMobile.hints.tooltip}" id="it6">
+                                <f:validator binding="#{bindings.CustomerMobile.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.CustomerMobile.format}"/>
+                            </af:inputText>
+                        </af:panelFormLayout>
+                        <af:spacer id="s1" inlineStyle="width:20px;" width="1"/>
+                        <af:panelFormLayout id="pfl1" labelWidth="100">
+                            <af:inputText value="#{bindings.CustomerAddess1.inputValue}"
+                                          label="#{bnd.customer_address1}"
+                                          required="#{bindings.CustomerAddess1.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CustomerAddess1.hints.precision}"
+                                          shortDesc="#{bindings.CustomerAddess1.hints.tooltip}" id="it7" rows="1">
+                                <f:validator binding="#{bindings.CustomerAddess1.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CustomerAddress2.inputValue}"
+                                          label="#{bnd.customer_address2}"
+                                          required="#{bindings.CustomerAddress2.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CustomerAddress2.hints.precision}"
+                                          shortDesc="#{bindings.CustomerAddress2.hints.tooltip}" id="it8" rows="1">
+                                <f:validator binding="#{bindings.CustomerAddress2.validator}"/>
+                            </af:inputText>
+                            <af:selectOneRadio label="#{bnd.customer_type}"
+                                               value="#{bindings.CustomerType.attributeValue}" id="sor1"
+                                               layout="horizontal">
+                                <af:selectItem label="شركات" value="2" id="si1"/>
+                                <af:selectItem label="افراد" value="1" id="si2"/>
+                            </af:selectOneRadio>
+                            <af:inputText value="#{bindings.CustomerEmail.inputValue}" label="#{bnd.customer_email}"
+                                          required="#{bindings.CustomerEmail.hints.mandatory}" columns="20"
+                                          maximumLength="#{bindings.CustomerEmail.hints.precision}"
+                                          shortDesc="#{bindings.CustomerEmail.hints.tooltip}" id="it10" rows="1">
+                                <f:validator binding="#{bindings.CustomerEmail.validator}"/>
+                            </af:inputText>
+                        </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Customer1.collectionModel}" var="row"
+                                  rows="#{bindings.Customer1.rangeSize}"
+                                  emptyText="#{bindings.Customer1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.Customer1.rangeSize}" id="t1"
+                                  partialTriggers=":::b1 :::b2 :::b3 :::b4"
+                                  selectedRowKeys="#{bindings.Customer1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Customer1.collectionModel.makeCurrent}"
+                                  rowSelection="single">
+                            <af:column headerText="#{bnd.customer_number}" id="c1">
+                                <af:outputText value="#{row.CNumber}"
+                                               shortDesc="#{bindings.Customer1.hints.CNumber.tooltip}" id="ot6">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Customer1.hints.CNumber.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_fname}" id="c2">
+                                <af:outputText value="#{row.CFname}"
+                                               shortDesc="#{bindings.Customer1.hints.CFname.tooltip}" id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_lname}" id="c3">
+                                <af:outputText value="#{row.CLanme}"
+                                               shortDesc="#{bindings.Customer1.hints.CLanme.tooltip}" id="ot3"/>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_nationality}" id="c4">
+                                <af:outputText value="#{row.CNationality}"
+                                               shortDesc="#{bindings.Customer1.hints.CNationality.tooltip}" id="ot8">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Customer1.hints.CNationality.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_gander}" id="c5">
+                                <af:outputText value="#{row.CGander}"
+                                               shortDesc="#{bindings.Customer1.hints.CGander.tooltip}" id="ot2"/>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_mobile_no}" id="c6">
+                                <af:outputText value="#{row.CustomerMobile}"
+                                               shortDesc="#{bindings.Customer1.hints.CustomerMobile.tooltip}" id="ot10">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Customer1.hints.CustomerMobile.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_address1}" id="c7" width="150">
+                                <af:outputText value="#{row.CustomerAddess1}"
+                                               shortDesc="#{bindings.Customer1.hints.CustomerAddess1.tooltip}"
+                                               id="ot4"/>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_address2}" id="c8" width="150">
+                                <af:outputText value="#{row.CustomerAddress2}"
+                                               shortDesc="#{bindings.Customer1.hints.CustomerAddress2.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_type}" id="c9">
+                                <af:outputText value="#{row.CustomerType}"
+                                               shortDesc="#{bindings.Customer1.hints.CustomerType.tooltip}" id="ot7">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Customer1.hints.CustomerType.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bnd.customer_email}" id="c10" width="200">
+                                <af:outputText value="#{row.CustomerEmail}"
+                                               shortDesc="#{bindings.Customer1.hints.CustomerEmail.tooltip}" id="ot9"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                    <af:popup childCreation="deferred" autoCancel="disabled" id="dlt_msg_p1"
+                              binding="#{svBean.delete_msg_popup}">
+                        <af:panelWindow id="pw1">
+                            <af:panelGroupLayout id="pgl7" layout="vertical" halign="center">
+                                <af:outputText id="ot16" inlineStyle="font-size:x-large;"
+                                               value="#{bnd.Delete_message}"/>
+                                <af:panelGroupLayout id="pgl9" layout="horizontal"
+                                                     inlineStyle="width:226px; height:59px;">
+                                    <af:button text="#{bnd.detele}" id="b15" action="#{svBean.deleteAction}"/>
+                                    <af:button text="#{bnd.cancel}" id="b16"/>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:panelWindow>
+                    </af:popup>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

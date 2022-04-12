@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InventoryEO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="INVENTORY"
+  AliasName="InventoryEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="InventoryNo"
+    IsNotNull="true"
+    ColumnName="INVENTORY_NO"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INVENTORY"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Location"
+    Precision="100"
+    ColumnName="LOCATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INVENTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="InventoryPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="INVENTORY_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="products.productSystem.model.entity.InventoryEO.InventoryNo"/>
+    </AttrArray>
+  </Key>
+</Entity>
